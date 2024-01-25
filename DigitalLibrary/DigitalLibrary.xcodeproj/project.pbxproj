@@ -11,6 +11,10 @@
 		D021706B2B60624800B95F47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021706A2B60624800B95F47 /* ContentView.swift */; };
 		D021706D2B60624A00B95F47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706C2B60624A00B95F47 /* Assets.xcassets */; };
 		D02170702B60624A00B95F47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706F2B60624A00B95F47 /* Preview Assets.xcassets */; };
+		D0EED6562B62AEE900410E79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6552B62AEE900410E79 /* User.swift */; };
+		D0EED6582B62AEF500410E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6572B62AEF500410E79 /* Book.swift */; };
+		D0EED65A2B62B14400410E79 /* UserMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6592B62B14400410E79 /* UserMockData.swift */; };
+		D0EED65C2B62B15D00410E79 /* BooksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED65B2B62B15D00410E79 /* BooksMockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		D021706A2B60624800B95F47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D021706C2B60624A00B95F47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D021706F2B60624A00B95F47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0EED6552B62AEE900410E79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D0EED6572B62AEF500410E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D0EED6592B62B14400410E79 /* UserMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMockData.swift; sourceTree = "<group>"; };
+		D0EED65B2B62B15D00410E79 /* BooksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +59,8 @@
 		D02170672B60624800B95F47 /* DigitalLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				D0EED6512B62AE6D00410E79 /* MockData */,
+				D0EED6502B62AE3E00410E79 /* Models */,
 				D02170682B60624800B95F47 /* DigitalLibraryApp.swift */,
 				D021706A2B60624800B95F47 /* ContentView.swift */,
 				D021706C2B60624A00B95F47 /* Assets.xcassets */,
@@ -65,6 +75,24 @@
 				D021706F2B60624A00B95F47 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0EED6502B62AE3E00410E79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0EED6552B62AEE900410E79 /* User.swift */,
+				D0EED6572B62AEF500410E79 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0EED6512B62AE6D00410E79 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				D0EED6592B62B14400410E79 /* UserMockData.swift */,
+				D0EED65B2B62B15D00410E79 /* BooksMockData.swift */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +165,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0EED6582B62AEF500410E79 /* Book.swift in Sources */,
 				D021706B2B60624800B95F47 /* ContentView.swift in Sources */,
 				D02170692B60624800B95F47 /* DigitalLibraryApp.swift in Sources */,
+				D0EED65A2B62B14400410E79 /* UserMockData.swift in Sources */,
+				D0EED65C2B62B15D00410E79 /* BooksMockData.swift in Sources */,
+				D0EED6562B62AEE900410E79 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
