@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9394C1ED2B65088D005D6D83 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1EC2B65088D005D6D83 /* LibraryView.swift */; };
+		9394C1EF2B6508AE005D6D83 /* MyBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1EE2B6508AE005D6D83 /* MyBooksView.swift */; };
+		9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1F12B6508E0005D6D83 /* StatisticsView.swift */; };
+		9394C1F42B6508F7005D6D83 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1F32B6508F7005D6D83 /* ProfileView.swift */; };
+		9394C1F62B650C2F005D6D83 /* TabbedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1F52B650C2F005D6D83 /* TabbedItems.swift */; };
+		9394C1F82B650CA0005D6D83 /* MainTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9394C1F72B650CA0005D6D83 /* MainTabbedView.swift */; };
 		D02170692B60624800B95F47 /* DigitalLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02170682B60624800B95F47 /* DigitalLibraryApp.swift */; };
-		D021706B2B60624800B95F47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021706A2B60624800B95F47 /* ContentView.swift */; };
 		D021706D2B60624A00B95F47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706C2B60624A00B95F47 /* Assets.xcassets */; };
 		D02170702B60624A00B95F47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706F2B60624A00B95F47 /* Preview Assets.xcassets */; };
 		D0EED6562B62AEE900410E79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6552B62AEE900410E79 /* User.swift */; };
@@ -18,9 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9394C1EC2B65088D005D6D83 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		9394C1EE2B6508AE005D6D83 /* MyBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksView.swift; sourceTree = "<group>"; };
+		9394C1F12B6508E0005D6D83 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		9394C1F32B6508F7005D6D83 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9394C1F52B650C2F005D6D83 /* TabbedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedItems.swift; sourceTree = "<group>"; };
+		9394C1F72B650CA0005D6D83 /* MainTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedView.swift; sourceTree = "<group>"; };
 		D02170652B60624800B95F47 /* DigitalLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02170682B60624800B95F47 /* DigitalLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalLibraryApp.swift; sourceTree = "<group>"; };
-		D021706A2B60624800B95F47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D021706C2B60624A00B95F47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D021706F2B60624A00B95F47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0EED6552B62AEE900410E79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -40,6 +50,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9394C1E62B650752005D6D83 /* CustomTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1F52B650C2F005D6D83 /* TabbedItems.swift */,
+				9394C1F72B650CA0005D6D83 /* MainTabbedView.swift */,
+			);
+			path = CustomTabbar;
+			sourceTree = "<group>";
+		};
+		9394C1E72B6507FF005D6D83 /* MainScreens */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1E82B650814005D6D83 /* LibraryScreen */,
+				9394C1E92B650826005D6D83 /* MyBooksScreen */,
+				9394C1EA2B65082F005D6D83 /* StatisticsScreen */,
+				9394C1EB2B65083B005D6D83 /* ProfileScreen */,
+			);
+			path = MainScreens;
+			sourceTree = "<group>";
+		};
+		9394C1E82B650814005D6D83 /* LibraryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1EC2B65088D005D6D83 /* LibraryView.swift */,
+			);
+			path = LibraryScreen;
+			sourceTree = "<group>";
+		};
+		9394C1E92B650826005D6D83 /* MyBooksScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1EE2B6508AE005D6D83 /* MyBooksView.swift */,
+			);
+			path = MyBooksScreen;
+			sourceTree = "<group>";
+		};
+		9394C1EA2B65082F005D6D83 /* StatisticsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1F12B6508E0005D6D83 /* StatisticsView.swift */,
+			);
+			path = StatisticsScreen;
+			sourceTree = "<group>";
+		};
+		9394C1EB2B65083B005D6D83 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9394C1F32B6508F7005D6D83 /* ProfileView.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
 		D021705C2B60624800B95F47 = {
 			isa = PBXGroup;
 			children = (
@@ -59,10 +121,11 @@
 		D02170672B60624800B95F47 /* DigitalLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				9394C1E72B6507FF005D6D83 /* MainScreens */,
+				9394C1E62B650752005D6D83 /* CustomTabbar */,
 				D0EED6512B62AE6D00410E79 /* MockData */,
 				D0EED6502B62AE3E00410E79 /* Models */,
 				D02170682B60624800B95F47 /* DigitalLibraryApp.swift */,
-				D021706A2B60624800B95F47 /* ContentView.swift */,
 				D021706C2B60624A00B95F47 /* Assets.xcassets */,
 				D021706E2B60624A00B95F47 /* Preview Content */,
 			);
@@ -165,8 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9394C1ED2B65088D005D6D83 /* LibraryView.swift in Sources */,
 				D0EED6582B62AEF500410E79 /* Book.swift in Sources */,
-				D021706B2B60624800B95F47 /* ContentView.swift in Sources */,
+				9394C1F42B6508F7005D6D83 /* ProfileView.swift in Sources */,
+				9394C1F62B650C2F005D6D83 /* TabbedItems.swift in Sources */,
+				9394C1F82B650CA0005D6D83 /* MainTabbedView.swift in Sources */,
+				9394C1EF2B6508AE005D6D83 /* MyBooksView.swift in Sources */,
+				9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */,
 				D02170692B60624800B95F47 /* DigitalLibraryApp.swift in Sources */,
 				D0EED65A2B62B14400410E79 /* UserMockData.swift in Sources */,
 				D0EED65C2B62B15D00410E79 /* BooksMockData.swift in Sources */,
