@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct User {
-    var firstName: String
-    var lastName: String
-    var email: String
-    var phone: String
-    var password: String
-    var books: [Book] = []
+struct UserModel: Codable {
+    let id: String
+    let firstName: String
+    let lastName: String
+    let email: String
+    let phone: String
+    var readingBooks: [Book]? = []
+    var droppedBooks: [Book]? = []
+    var readBooks: [Book]? = []
 }

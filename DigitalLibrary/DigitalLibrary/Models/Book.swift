@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Book {
+struct Book: Codable, Hashable {
     let title: String
     let description: String
     let author: String
     let publisher: String
     let year: Int
-    let qrcode: String? = nil // don't know how to configure it, so for it will be nil
-    let isbn: String? = nil // don't know how to configure it, so for it will be nil
-    let photo: String? = nil // don't know how to configure it, so for it will be nil
+//    let qrcode: String? // don't know how to configure it, so for it will be nil
+//    let isbn: String? // don't know how to configure it, so for it will be nil
+//    let photo: String? // don't know how to configure it, so for it will be nil
 
     var isTaken: Bool = false
     var returningDeadline: Date? = nil
