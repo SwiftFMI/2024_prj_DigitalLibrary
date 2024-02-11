@@ -53,7 +53,6 @@ struct SignUpView: View {
                     Button("Sign Up") {
                         viewModel.signUp()
                     }
-
                     .padding()
                     .frame(width: 310, height: 50)
                     .background(viewModel.formIsValid ? .purple.opacity(0.9) : .purple.opacity(0.5))
@@ -69,7 +68,10 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView(viewModel: SignUpViewModel(
+<<<<<<< HEAD
             appRootManager: AppRootManager(),
+=======
+>>>>>>> 9ff2356 (Add sign up screen)
             authenticationProvider: AuthenticationRepositoryMock(),
             usersProvider: UserRepositoryMock()
         ))
