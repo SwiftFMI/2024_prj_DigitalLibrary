@@ -6,7 +6,7 @@
 //
 
 final class BooksRepositoryMock: BooksProvidable {
-    private var books: [Book] = []
+    private var books: [Book] = BooksMockData.books
 
     func create(_ book: Book) {
         books.append(book)

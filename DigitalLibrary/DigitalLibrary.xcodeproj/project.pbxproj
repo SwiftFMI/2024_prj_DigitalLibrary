@@ -33,6 +33,7 @@
 		DA25BFC92B78ADE900B6F03C /* AuthenticationRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFC82B78ADE900B6F03C /* AuthenticationRepositoryMock.swift */; };
 		DA25BFCB2B78C81100B6F03C /* UserRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFCA2B78C81100B6F03C /* UserRepositoryMock.swift */; };
 		DA25BFCD2B78D92200B6F03C /* BooksRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFCC2B78D92200B6F03C /* BooksRepositoryMock.swift */; };
+		DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFD62B7ACF3D00B6F03C /* BooksMockData.swift */; };
 		DAE5DF422B6EE0E100A09560 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF412B6EE0E100A09560 /* LoginView.swift */; };
 		DAE5DF442B6EE15800A09560 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF432B6EE15800A09560 /* TextInputView.swift */; };
 		DAE5DF462B6F923200A09560 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF452B6F923200A09560 /* LoginViewModel.swift */; };
@@ -74,6 +75,7 @@
 		DA25BFC82B78ADE900B6F03C /* AuthenticationRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryMock.swift; sourceTree = "<group>"; };
 		DA25BFCA2B78C81100B6F03C /* UserRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryMock.swift; sourceTree = "<group>"; };
 		DA25BFCC2B78D92200B6F03C /* BooksRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepositoryMock.swift; sourceTree = "<group>"; };
+		DA25BFD62B7ACF3D00B6F03C /* BooksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMockData.swift; sourceTree = "<group>"; };
 		DAE5DF412B6EE0E100A09560 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DAE5DF432B6EE15800A09560 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		DAE5DF452B6F923200A09560 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		D02170672B60624800B95F47 /* DigitalLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				DA25BFD52B7ACF2E00B6F03C /* MockData */,
 				DA25BFC72B78AA9200B6F03C /* Mocks */,
 				DA17C6CB2B72D00F00FBAEF5 /* Validators */,
 				DA17C6C82B72864A00FBAEF5 /* Components */,
@@ -253,6 +256,14 @@
 				DA25BFCC2B78D92200B6F03C /* BooksRepositoryMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		DA25BFD52B7ACF2E00B6F03C /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				DA25BFD62B7ACF3D00B6F03C /* BooksMockData.swift */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 		DAE5DF402B6EE0BE00A09560 /* LoginScreen */ = {
@@ -386,6 +397,7 @@
 				9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */,
 				DAF765A22B66E73100BA04EF /* AuthenticationRepository.swift in Sources */,
 				DA17C6CD2B72D02700FBAEF5 /* EmailValidator.swift in Sources */,
+				DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */,
 				DA17C6D72B72D27B00FBAEF5 /* ConfirmPasswordValidator.swift in Sources */,
 				DAF765AF2B66F6E700BA04EF /* FirebaseConfiguration.swift in Sources */,
 				DA0994772B7279D3008FE0B3 /* SignUpView.swift in Sources */,
