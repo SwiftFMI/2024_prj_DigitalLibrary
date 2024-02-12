@@ -83,6 +83,9 @@ final class SignUpViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
 
+    @Published var showingAlert: Bool = false
+    @Published var alertMessage: String = ""
+
     var formIsValid: Bool {
          firstNameIsValid && lastNameIsValid && phoneNumberIsValid &&
          emailIsValid && passwordIsValid && confirmPasswordIsValid &&
@@ -129,7 +132,8 @@ final class SignUpViewModel: ObservableObject {
 
                 appRootManager.currentRoot = .main
             } catch {
-                print(error)
+                showingAlert = true
+                alertMessage = error.localizedDescription
             }
         }
     }

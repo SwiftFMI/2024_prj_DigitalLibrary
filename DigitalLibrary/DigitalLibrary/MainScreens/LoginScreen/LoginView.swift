@@ -36,6 +36,9 @@ struct LoginView: View {
                 Button("Sign In") {
                     viewModel.signIn()
                 }
+                .alert(viewModel.alertMessage, isPresented: $viewModel.showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
                 .padding()
                 .frame(width: 275, height: 50)
                 .background(viewModel.formIsValid ? .purple.opacity(0.9) : .purple.opacity(0.5))

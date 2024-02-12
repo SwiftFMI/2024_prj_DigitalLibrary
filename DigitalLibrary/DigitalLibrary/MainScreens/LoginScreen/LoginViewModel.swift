@@ -34,7 +34,10 @@ final class LoginViewModel: ObservableObject {
 
     @Published var email: String = ""
     @Published var password: String = ""
-    
+
+    @Published var showingAlert: Bool = false
+    @Published var alertMessage: String = ""
+
     var formIsValid: Bool {
         emailIsValid && passwordIsValid && startedEditingEmail && startedEditingPassword
     }
@@ -61,8 +64,15 @@ final class LoginViewModel: ObservableObject {
                 try await authenticationProvider.signIn(emailAddress: email, password: password)
 
                 appRootManager.currentRoot = .main
-            } catch {
-                print(error)
+            } catch  {
+                showingAlert = true
+
+                let error = error as NSError
+                if error.code == 17004 {
+                    alertMessage = "Invalid credentials"
+                } else {
+                    alertMessage = error.localizedDescription
+                }
             }
         }
     }
