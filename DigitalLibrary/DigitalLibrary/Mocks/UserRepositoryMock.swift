@@ -28,8 +28,8 @@ final class UserRepositoryMock: UserProvidable {
         currentUser?.readingBooks?.append(book)
     }
 
-    func addBookInDropped(_ book: Book) {
-        currentUser?.droppedBooks?.append(book)
+    func addBookInUnfinished(_ book: Book) {
+        currentUser?.unfinishedBooks?.append(book)
     }
 
     func addBookInRead(_ book: Book) {
@@ -41,13 +41,13 @@ final class UserRepositoryMock: UserProvidable {
         currentUser?.readingBooks = readingBooks
     }
 
-    func removeBookFromDropped(_ book: Book) {
-        let droppedBooks = currentUser?.droppedBooks?.filter { $0 != book }
-        currentUser?.droppedBooks = droppedBooks
+    func removeBookFromUnfinished(_ book: Book) {
+        let unfinishedBooks = currentUser?.unfinishedBooks?.filter { $0 != book }
+        currentUser?.unfinishedBooks = unfinishedBooks
     }
 
     func removeBookFromRead(_ book: Book) {
-        let readBooks = currentUser?.readBooks?.filter { $0 != book}
+        let unfinishedBooks = currentUser?.readBooks?.filter { $0 != book}
         currentUser?.readBooks = readBooks
     }
 }

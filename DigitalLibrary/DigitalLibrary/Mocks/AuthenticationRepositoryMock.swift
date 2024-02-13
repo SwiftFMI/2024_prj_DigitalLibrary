@@ -14,17 +14,17 @@ final class AuthenticationRepositoryMock: AuthenticationProvidable {
     func getCurrentUserID() -> String? {
         currentUser?.id
     }
-    
+
     func signUp(emailAddress: String, password: String) async throws {
         registeredUsers.append(FirebaseUser(id: UUID().uuidString,
                                             email: emailAddress,
                                             password: password))
     }
-    
+
     func signIn(emailAddress: String, password: String) async throws {
         currentUser = registeredUsers.first { $0.email == emailAddress && $0.password == password }
     }
-    
+
     func signOut() throws {
         currentUser = nil
     }

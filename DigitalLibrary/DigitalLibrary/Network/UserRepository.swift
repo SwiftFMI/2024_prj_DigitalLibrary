@@ -13,10 +13,10 @@ protocol UserProvidable {
     func getCurrentUser() async -> UserModel?
     func updateUser(_ user: UserModel)
     func addBookInReading(_ book: Book)
-    func addBookInDropped(_ book: Book)
+    func addBookInUnfinished(_ book: Book)
     func addBookInRead(_ book: Book)
     func removeBookFromReading(_ book: Book)
-    func removeBookFromDropped(_ book: Book)
+    func removeBookFromUnfinished(_ book: Book)
     func removeBookFromRead(_ book: Book)
 }
 
@@ -72,8 +72,8 @@ final class UserRepository: UserProvidable {
         reference?.child("readingBooks/\(book.title)").setValue(book.toDictionary())
     }
 
-    func addBookInDropped(_ book: Book) {
-        reference?.child("droppedBooks/\(book.title)").setValue(book.toDictionary())
+    func addBookInUnfinished(_ book: Book) {
+        reference?.child("unfinishedBooks/\(book.title)").setValue(book.toDictionary())
     }
 
     func addBookInRead(_ book: Book) {
@@ -84,12 +84,11 @@ final class UserRepository: UserProvidable {
         reference?.child("readingBooks/\(book.title)").removeValue()
     }
 
-    func removeBookFromDropped(_ book: Book) {
-        reference?.child("droppedBooks/\(book.title)").removeValue()
+    func removeBookFromUnfinished(_ book: Book) {
+        reference?.child("unfinishedBooks/\(book.title)").removeValue()
     }
 
     func removeBookFromRead(_ book: Book) {
         reference?.child("readBooks/\(book.title)").removeValue()
     }
-
 }
