@@ -8,7 +8,27 @@
 import SwiftUI
 
 struct LibraryView: View {
+    @State private var books: [Book] = []
+    private let booksProvider: BooksProvidable
+
+    init(booksProvider: BooksProvidable) {
+        self.booksProvider = booksProvider
+    }
+
     var body: some View {
-        Text("Library")
+        ScrollView {
+            VStack {
+                ForEach(books, id: \.self) { book in
+                    Text(book.title)
+                        .background(.red)
+                }
+            }
+        }
+        .padding()
+        .onAppear(perform: {
+            Task {
+                books = await booksProvider.getAll() ?? []
+            }
+        })
     }
 }

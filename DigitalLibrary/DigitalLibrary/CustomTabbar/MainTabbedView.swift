@@ -8,12 +8,30 @@
 import SwiftUI
 
 struct MainTabbedView: View {
+    @EnvironmentObject private var appRootManager: AppRootManager
+    private let authenticationProvider: AuthenticationProvidable
+    private let userProvider: UserProvidable
+    private let booksProvider: BooksProvidable
+
     @State var selectedTab = 0
+
+    init(authenticationProvider: AuthenticationProvidable,
+         userProvider: UserProvidable,
+         booksProvider: BooksProvidable,
+         selectedTab: Int = 0) {
+        self.authenticationProvider = authenticationProvider
+        self.userProvider = userProvider
+        self.booksProvider = booksProvider
+        self.selectedTab = selectedTab
+
+        guard let id = authenticationProvider.getCurrentUserID() else { return }
+        userProvider.setUserID(id)
+    }
 
     var body: some View {
         ZStack(alignment: .bottom){
             TabView(selection: $selectedTab) {
-                LibraryView()
+                LibraryView(booksProvider: BooksRepository())
                     .tag(0)
 
                 MyBooksView()
@@ -72,6 +90,8 @@ extension MainTabbedView{
 
 struct MainTabbedView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabbedView()
+        MainTabbedView(authenticationProvider: AuthenticationRepositoryMock(),
+                       userProvider: UserRepositoryMock(),
+                       booksProvider: BooksRepositoryMock())
     }
 }
