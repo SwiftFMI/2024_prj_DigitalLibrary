@@ -15,7 +15,7 @@ struct Book: Codable, Hashable {
     let year: Int
 //    let qrcode: String? // don't know how to configure it, so for it will be nil
 //    let isbn: String? // don't know how to configure it, so for it will be nil
-//    let photo: String? // don't know how to configure it, so for it will be nil
+    let photo: String?
 
     var isTaken: Bool = false
     var returningDeadline: Date? = nil

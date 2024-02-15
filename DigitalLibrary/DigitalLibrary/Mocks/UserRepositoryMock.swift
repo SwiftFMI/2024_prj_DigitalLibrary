@@ -47,7 +47,7 @@ final class UserRepositoryMock: UserProvidable {
     }
 
     func removeBookFromRead(_ book: Book) {
-        let unfinishedBooks = currentUser?.readBooks?.filter { $0 != book}
+        let readBooks = currentUser?.readBooks?.filter { $0 != book}
         currentUser?.readBooks = readBooks
     }
 }

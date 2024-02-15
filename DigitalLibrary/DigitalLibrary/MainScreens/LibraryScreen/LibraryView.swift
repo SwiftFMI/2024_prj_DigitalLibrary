@@ -8,27 +8,52 @@
 import SwiftUI
 
 struct LibraryView: View {
-    @State private var books: [Book] = []
-    private let booksProvider: BooksProvidable
-
-    init(booksProvider: BooksProvidable) {
-        self.booksProvider = booksProvider
-    }
+    @ObservedObject var viewModel: LibraryViewModel
 
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(books, id: \.self) { book in
-                    Text(book.title)
-                        .background(.red)
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    VStack {
+                        SearchBar(text: $viewModel.searchText, isSearching: $viewModel.isSearching)
+
+                        List(viewModel.filteredBooks, id: \.self) { book in
+                            NavigationLink(destination: BookDetailsView(viewModel: .init(book: book))) {
+                                BookListCell(book: book)
+                            }
+                        }
+                        .listStyle(PlainListStyle())
+                    }
                 }
             }
-        }
-        .padding()
-        .onAppear(perform: {
-            Task {
-                books = await booksProvider.getAll() ?? []
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Image(systemName: "books.vertical.fill")
+                            .foregroundColor(.purple.opacity(0.4))
+                        Text("All Books")
+                            .font(.headline)
+                            .foregroundColor(.purple.opacity(0.6))
+                    }
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        // The scanner screen is attached here
+                    }) {
+                        Image(systemName: "qrcode.viewfinder")
+                            .foregroundColor(.purple.opacity(0.6))
+                    }
+                }
             }
-        })
+            .padding(.bottom, 16)
+            .onAppear {
+                viewModel.getAllBooks()
+            }
+        }
+        .accentColor(.purple)
     }
 }
