@@ -12,15 +12,19 @@ struct LibraryView: View {
 
     var body: some View {
         NavigationView {
-            Group {
+            VStack {
                 if viewModel.isLoading {
                     ProgressView()
                 } else {
                     VStack {
-                        SearchBar(text: $viewModel.searchText, isSearching: $viewModel.isSearching)
+                        SearchBar(text: $viewModel.searchText,
+                                  isSearching: $viewModel.isSearching,
+                                  selectedScope: $viewModel.selectedScope)
 
                         List(viewModel.filteredBooks, id: \.self) { book in
-                            NavigationLink(destination: BookDetailsView(viewModel: .init(book: book))) {
+                            NavigationLink(destination: BookDetailsView(viewModel:
+                                    .init(book: book, booksProvider: viewModel.booksProvider)
+                            )) {
                                 BookListCell(book: book)
                             }
                         }
