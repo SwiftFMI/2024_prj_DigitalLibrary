@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct SwiftUIChangeRootViewApp: App {
@@ -13,6 +14,7 @@ struct SwiftUIChangeRootViewApp: App {
     private let authenticationProvider: AuthenticationProvidable = AuthenticationRepository()
     private let userProvider: UserProvidable = UserRepository()
     private let booksProvider: BooksProvidable = BooksRepository()
+    private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
         WindowGroup {
@@ -28,6 +30,15 @@ struct SwiftUIChangeRootViewApp: App {
                                    booksProvider: booksProvider)
                 }
             }
+            .onAppear {
+                UNUserNotificationCenter.current().delegate = notificationDelegate
+            }
         }
+    }
+}
+
+class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
     }
 }

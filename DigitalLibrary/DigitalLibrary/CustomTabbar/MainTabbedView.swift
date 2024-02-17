@@ -31,7 +31,7 @@ struct MainTabbedView: View {
     var body: some View {
         ZStack(alignment: .bottom){
             TabView(selection: $selectedTab) {
-                LibraryView(booksProvider: BooksRepository())
+                LibraryView(viewModel: LibraryViewModel(booksProvider: booksProvider))
                     .tag(0)
 
                 MyBooksView()
@@ -58,16 +58,17 @@ struct MainTabbedView: View {
                 }
                 .padding(6)
             }
-            .frame(height: 70)
+            .frame(height: 60)
             .background(.purple.opacity(0.2))
             .cornerRadius(35)
             .padding(.horizontal, 26)
+            .offset(y: 15)
         }
     }
 }
 
 extension MainTabbedView{
-    func customTabItem(imageName: String, title: String, isActive: Bool) -> some View{
+    func customTabItem(imageName: String, title: String, isActive: Bool) -> some View {
         HStack(spacing: 10){
             Spacer()
             Image(imageName)
@@ -75,14 +76,15 @@ extension MainTabbedView{
                 .renderingMode(.template)
                 .foregroundColor(isActive ? .black : .gray)
                 .frame(width: 20, height: 20)
-            if isActive{
+            if isActive {
                 Text(title)
                     .font(.system(size: 14))
                     .foregroundColor(isActive ? .black : .gray)
+                    .fixedSize()
             }
             Spacer()
         }
-        .frame(width: isActive ? .infinity : 60, height: 60)
+        .frame(height: 50)
         .background(isActive ? .purple.opacity(0.4) : .clear)
         .cornerRadius(30)
     }
