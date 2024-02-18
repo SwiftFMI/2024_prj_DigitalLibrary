@@ -9,29 +9,14 @@ import SwiftUI
 
 struct MainTabbedView: View {
     @EnvironmentObject private var appRootManager: AppRootManager
-    private let authenticationProvider: AuthenticationProvidable
-    private let userProvider: UserProvidable
-    private let booksProvider: BooksProvidable
-
-    @State var selectedTab = 0
-
-    init(authenticationProvider: AuthenticationProvidable,
-         userProvider: UserProvidable,
-         booksProvider: BooksProvidable,
-         selectedTab: Int = 0) {
-        self.authenticationProvider = authenticationProvider
-        self.userProvider = userProvider
-        self.booksProvider = booksProvider
-        self.selectedTab = selectedTab
-
-        guard let id = authenticationProvider.getCurrentUserID() else { return }
-        userProvider.setUserID(id)
-    }
+    @ObservedObject var viewModel: MainTabbedViewModel
 
     var body: some View {
         ZStack(alignment: .bottom){
-            TabView(selection: $selectedTab) {
-                LibraryView(viewModel: LibraryViewModel(booksProvider: booksProvider))
+            TabView(selection: $viewModel.selectedTab) {
+                LibraryView(viewModel: .init(booksProvider: viewModel.booksProvider,
+                                             userProvider: viewModel.userProvider,
+                                             authenticationProvider: viewModel.authenticationProvider))
                     .tag(0)
 
                 MyBooksView()
@@ -48,11 +33,11 @@ struct MainTabbedView: View {
                 HStack{
                     ForEach((TabbedItems.allCases), id: \.self){ item in
                         Button{
-                            selectedTab = item.rawValue
+                            viewModel.selectedTab = item.rawValue
                         } label: {
                             customTabItem(imageName: item.iconName,
                                           title: item.title,
-                                          isActive: (selectedTab == item.rawValue))
+                                          isActive: (viewModel.selectedTab == item.rawValue))
                         }
                     }
                 }
@@ -92,8 +77,8 @@ extension MainTabbedView{
 
 struct MainTabbedView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabbedView(authenticationProvider: AuthenticationRepositoryMock(),
-                       userProvider: UserRepositoryMock(),
-                       booksProvider: BooksRepositoryMock())
+        MainTabbedView(viewModel: .init(authenticationProvider: AuthenticationRepositoryMock(),
+                                        userProvider: UserRepositoryMock(),
+                                        booksProvider: BooksRepositoryMock()))
     }
 }

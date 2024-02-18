@@ -23,7 +23,10 @@ struct LibraryView: View {
 
                         List(viewModel.filteredBooks, id: \.self) { book in
                             NavigationLink(destination: BookDetailsView(viewModel:
-                                    .init(book: book, booksProvider: viewModel.booksProvider)
+                                    .init(book: book,
+                                          booksProvider: viewModel.booksProvider,
+                                          userProvider: viewModel.userProvider,
+                                          authenticationProvider: viewModel.authenticationProvider)
                             )) {
                                 BookListCell(book: book)
                             }

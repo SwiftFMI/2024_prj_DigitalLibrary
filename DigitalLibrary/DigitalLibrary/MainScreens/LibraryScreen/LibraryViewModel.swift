@@ -16,6 +16,8 @@ final class LibraryViewModel: ObservableObject {
 
     private var books: [Book] = []
     let booksProvider: BooksProvidable
+    let userProvider: UserProvidable
+    let authenticationProvider: AuthenticationProvidable
 
     var filteredBooks: [Book] {
         if searchText.isEmpty {
@@ -25,8 +27,10 @@ final class LibraryViewModel: ObservableObject {
         }
     }
 
-    init(booksProvider: BooksProvidable) {
+    init(booksProvider: BooksProvidable, userProvider: UserProvidable, authenticationProvider: AuthenticationProvidable) {
         self.booksProvider = booksProvider
+        self.userProvider = userProvider
+        self.authenticationProvider = authenticationProvider
     }
 
     func getAllBooks() {
