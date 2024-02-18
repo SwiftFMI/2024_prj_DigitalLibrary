@@ -22,7 +22,7 @@ struct RootView: View {
 
     var body: some View {
         let viewModel = LoginViewModel(appRootManager: appRootManager,
-                                       authenticationProvider: authenticationProvider, 
+                                       authenticationProvider: authenticationProvider,
                                        userProvider: userProvider)
 
         LoginView(viewModel: viewModel)
@@ -32,7 +32,7 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView(appRootManager: AppRootManager(),
-                 authenticationProvider: AuthenticationRepositoryMock(), 
+                 authenticationProvider: AuthenticationRepositoryMock(),
                  userProvider: UserRepositoryMock())
     }
 }

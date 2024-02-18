@@ -44,7 +44,7 @@ struct BookDetailsView: View {
                 viewModel.addToMyBooks()
             }) {
                 Label(viewModel.buttonTitle, systemImage: viewModel.buttonImage)
-                    .foregroundColor(.purple)
+                    .foregroundColor(viewModel.isTaken ? .purple.opacity(0.4) : .purple)
                     .padding()
             }
             .disabled(viewModel.isTaken)
@@ -57,6 +57,9 @@ struct BookDetailsView: View {
 
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailsView(viewModel: .init(book: BooksMockData.books[0]))
+        BookDetailsView(viewModel: .init(book: BooksMockData.books[0],
+                                         booksProvider: BooksRepository(),
+                                         userProvider: UserRepository(),
+                                         authenticationProvider: AuthenticationRepository()))
     }
 }

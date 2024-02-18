@@ -10,16 +10,13 @@ import SwiftUI
 final class BookDetailsViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var alertMessage = ""
+    @Published var buttonTitle = ""
+    @Published var buttonImage = ""
 
     private var book: Book
-
-    var buttonTitle: String {
-        isTaken ? "Added to My Books" : "Add to My Books"
-    }
-
-    var buttonImage: String {
-        isTaken ? "star.fill" : "star"
-    }
+    private let booksProvider: BooksProvidable
+    private let userProvider: UserProvidable
+    private let authenticationProvider: AuthenticationProvidable
 
     var photo: String {
         book.photo ?? "brave_new_world"
@@ -49,13 +46,33 @@ final class BookDetailsViewModel: ObservableObject {
         book.isTaken
     }
 
-    init(book: Book) {
+    init(book: Book,
+         booksProvider: BooksProvidable,
+         userProvider: UserProvidable,
+         authenticationProvider: AuthenticationProvidable) {
         self.book = book
+        self.booksProvider = booksProvider
+        self.userProvider = userProvider
+        self.authenticationProvider = authenticationProvider
+        updateButtonState()
     }
 
     func addToMyBooks() {
         book.isTaken = true
+        booksProvider.update(book: book, with: authenticationProvider.getCurrentUserID() ?? "")
+        userProvider.addBookInReading(book)
+        updateButtonState()
         sendLocalNotification()
+    }
+
+    private func updateButtonState() {
+        if isTaken {
+            buttonTitle = "Аlready taken"
+            buttonImage = "star.fill"
+        } else {
+            buttonTitle = "Add to My Books"
+            buttonImage = "star"
+        }
     }
 
     private func sendLocalNotification() {
