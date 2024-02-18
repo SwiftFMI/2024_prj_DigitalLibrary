@@ -19,6 +19,14 @@
 		93EED1932B80D3BB003F77B7 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1922B80D3BB003F77B7 /* LibraryViewModel.swift */; };
 		93EED1962B80D811003F77B7 /* BookDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1952B80D811003F77B7 /* BookDetailsViewModel.swift */; };
 		93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */; };
+		D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */; };
+		D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */; };
+		D007C3EE2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */; };
+		D007C3F02B835C8800AF4489 /* StatisticsBarChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EF2B835C8800AF4489 /* StatisticsBarChartViewModel.swift */; };
+		D01889912B827261004DF83E /* StatisticsDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889902B827261004DF83E /* StatisticsDateFormatter.swift */; };
+		D01889932B82727E004DF83E /* StatisticsPointChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889922B82727E004DF83E /* StatisticsPointChart.swift */; };
+		D01889952B8272A8004DF83E /* StatisticsBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889942B8272A8004DF83E /* StatisticsBarChart.swift */; };
+		D01889972B8272C1004DF83E /* StatisticsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889962B8272C1004DF83E /* StatisticsButtons.swift */; };
 		D021706D2B60624A00B95F47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706C2B60624A00B95F47 /* Assets.xcassets */; };
 		D02170702B60624A00B95F47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D021706F2B60624A00B95F47 /* Preview Assets.xcassets */; };
 		D0EED6562B62AEE900410E79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6552B62AEE900410E79 /* User.swift */; };
@@ -66,6 +74,14 @@
 		93EED1922B80D3BB003F77B7 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		93EED1952B80D811003F77B7 /* BookDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewModel.swift; sourceTree = "<group>"; };
 		93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedViewModel.swift; sourceTree = "<group>"; };
+		D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtonsViewModel.swift; sourceTree = "<group>"; };
+		D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChartViewModel.swift; sourceTree = "<group>"; };
+		D007C3EF2B835C8800AF4489 /* StatisticsBarChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsBarChartViewModel.swift; sourceTree = "<group>"; };
+		D01889902B827261004DF83E /* StatisticsDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDateFormatter.swift; sourceTree = "<group>"; };
+		D01889922B82727E004DF83E /* StatisticsPointChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChart.swift; sourceTree = "<group>"; };
+		D01889942B8272A8004DF83E /* StatisticsBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsBarChart.swift; sourceTree = "<group>"; };
+		D01889962B8272C1004DF83E /* StatisticsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtons.swift; sourceTree = "<group>"; };
 		D02170652B60624800B95F47 /* DigitalLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D021706C2B60624A00B95F47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D021706F2B60624A00B95F47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -159,6 +175,13 @@
 			isa = PBXGroup;
 			children = (
 				9394C1F12B6508E0005D6D83 /* StatisticsView.swift */,
+				D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */,
+				D01889962B8272C1004DF83E /* StatisticsButtons.swift */,
+				D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */,
+				D01889922B82727E004DF83E /* StatisticsPointChart.swift */,
+				D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */,
+				D01889942B8272A8004DF83E /* StatisticsBarChart.swift */,
+				D007C3EF2B835C8800AF4489 /* StatisticsBarChartViewModel.swift */,
 			);
 			path = StatisticsScreen;
 			sourceTree = "<group>";
@@ -175,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				93EED1902B80CAE3003F77B7 /* SearchBar.swift */,
+				D01889902B827261004DF83E /* StatisticsDateFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -411,9 +435,11 @@
 				DA17C6DB2B72DAB700FBAEF5 /* PhoneNumberValidator.swift in Sources */,
 				DA25BFCB2B78C81100B6F03C /* UserRepositoryMock.swift in Sources */,
 				DA17C6CA2B7286AA00FBAEF5 /* SignUpViewModel.swift in Sources */,
+				D01889932B82727E004DF83E /* StatisticsPointChart.swift in Sources */,
 				9394C1ED2B65088D005D6D83 /* LibraryView.swift in Sources */,
 				93EED1912B80CAE3003F77B7 /* SearchBar.swift in Sources */,
 				DA25BFC92B78ADE900B6F03C /* AuthenticationRepositoryMock.swift in Sources */,
+				D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */,
 				D0EED6582B62AEF500410E79 /* Book.swift in Sources */,
 				DA17C6D32B72D08400FBAEF5 /* PasswordValidator.swift in Sources */,
 				DA17C6D12B72D06500FBAEF5 /* NameValidator.swift in Sources */,
@@ -421,8 +447,10 @@
 				DA17C6CF2B72D04100FBAEF5 /* EmptyValidator.swift in Sources */,
 				93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */,
 				93EED1932B80D3BB003F77B7 /* LibraryViewModel.swift in Sources */,
+				D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */,
 				DAE5DF442B6EE15800A09560 /* TextInputView.swift in Sources */,
 				9394C1F42B6508F7005D6D83 /* ProfileView.swift in Sources */,
+				D01889952B8272A8004DF83E /* StatisticsBarChart.swift in Sources */,
 				9394C1F62B650C2F005D6D83 /* TabbedItems.swift in Sources */,
 				DAF765A42B66E74200BA04EF /* Encodable+Extension.swift in Sources */,
 				DAE5DF492B6FAF4B00A09560 /* RootView.swift in Sources */,
@@ -431,15 +459,19 @@
 				9394C1EF2B6508AE005D6D83 /* MyBooksView.swift in Sources */,
 				DA17C6DD2B737FE700FBAEF5 /* UserRepository.swift in Sources */,
 				DAE5DF462B6F923200A09560 /* LoginViewModel.swift in Sources */,
+				D007C3F02B835C8800AF4489 /* StatisticsBarChartViewModel.swift in Sources */,
 				9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */,
 				93EED1962B80D811003F77B7 /* BookDetailsViewModel.swift in Sources */,
 				DAF765A22B66E73100BA04EF /* AuthenticationRepository.swift in Sources */,
 				DA17C6CD2B72D02700FBAEF5 /* EmailValidator.swift in Sources */,
 				DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */,
+				D01889912B827261004DF83E /* StatisticsDateFormatter.swift in Sources */,
 				DA17C6D72B72D27B00FBAEF5 /* ConfirmPasswordValidator.swift in Sources */,
 				DAF765AF2B66F6E700BA04EF /* FirebaseConfiguration.swift in Sources */,
 				DA0994772B7279D3008FE0B3 /* SignUpView.swift in Sources */,
+				D007C3EE2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift in Sources */,
 				DA17C6C52B72817200FBAEF5 /* AppRootManager.swift in Sources */,
+				D01889972B8272C1004DF83E /* StatisticsButtons.swift in Sources */,
 				93E688262B7ED3AD007CB34A /* BookDetailsView.swift in Sources */,
 				DAF765A62B66E76500BA04EF /* BookRepository.swift in Sources */,
 				DAE5DF422B6EE0E100A09560 /* LoginView.swift in Sources */,
