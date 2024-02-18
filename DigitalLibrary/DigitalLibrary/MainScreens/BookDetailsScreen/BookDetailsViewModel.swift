@@ -18,8 +18,11 @@ final class BookDetailsViewModel: ObservableObject {
     private let userProvider: UserProvidable
     private let authenticationProvider: AuthenticationProvidable
 
-    var photo: String {
-        book.photo ?? "brave_new_world"
+    private let userProvider: UserProvidable
+    private let authenticationProvider: AuthenticationProvidable
+
+    var photo: Data? {
+        book.photo
     }
 
     var title: String {

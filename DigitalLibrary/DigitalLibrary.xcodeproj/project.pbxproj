@@ -445,6 +445,7 @@
 				DA17C6D12B72D06500FBAEF5 /* NameValidator.swift in Sources */,
 				DA17C6C72B7281B600FBAEF5 /* SwiftUIChangeRootViewApp.swift in Sources */,
 				DA17C6CF2B72D04100FBAEF5 /* EmptyValidator.swift in Sources */,
+				DA25BFFF2B81EE9100B6F03C /* Sequence+Extension.swift in Sources */,
 				93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */,
 				93EED1932B80D3BB003F77B7 /* LibraryViewModel.swift in Sources */,
 				D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */,

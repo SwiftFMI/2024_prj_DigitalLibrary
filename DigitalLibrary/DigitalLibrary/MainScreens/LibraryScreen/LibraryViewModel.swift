@@ -16,6 +16,7 @@ final class LibraryViewModel: ObservableObject {
 
     private var books: [Book] = []
     let booksProvider: BooksProvidable
+    let imagesProvider: ImagesProvidable
     let userProvider: UserProvidable
     let authenticationProvider: AuthenticationProvidable
 
@@ -33,10 +34,14 @@ final class LibraryViewModel: ObservableObject {
         }
     }
 
-    init(booksProvider: BooksProvidable, userProvider: UserProvidable, authenticationProvider: AuthenticationProvidable) {
+    init(booksProvider: BooksProvidable,
+         userProvider: UserProvidable,
+         authenticationProvider: AuthenticationProvidable,
+         imagesProvider: ImagesProvidable) {
         self.booksProvider = booksProvider
         self.userProvider = userProvider
         self.authenticationProvider = authenticationProvider
+        self.imagesProvider = imagesProvider
     }
 
     func getAllBooks() {

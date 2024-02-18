@@ -58,8 +58,8 @@ struct BookDetailsView: View {
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         BookDetailsView(viewModel: .init(book: BooksMockData.books[0],
-                                         booksProvider: BooksRepository(),
-                                         userProvider: UserRepository(),
-                                         authenticationProvider: AuthenticationRepository()))
+                                         booksProvider: BooksRepositoryMock(),
+                                         userProvider: UserRepositoryMock(),
+                                         authenticationProvider: AuthenticationRepositoryMock()))
     }
 }
