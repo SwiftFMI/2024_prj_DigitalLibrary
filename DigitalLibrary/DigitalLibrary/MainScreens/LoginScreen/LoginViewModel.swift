@@ -38,6 +38,8 @@ final class LoginViewModel: ObservableObject {
     @Published var showingAlert: Bool = false
     @Published var alertMessage: String = ""
 
+    @Published var isLoading = false
+
     var formIsValid: Bool {
         emailIsValid && passwordIsValid && startedEditingEmail && startedEditingPassword
     }
@@ -59,6 +61,7 @@ final class LoginViewModel: ObservableObject {
     }
 
     func signIn() {
+        isLoading = true
         Task {
             do {
                 try await authenticationProvider.signIn(emailAddress: email, password: password)
@@ -73,6 +76,9 @@ final class LoginViewModel: ObservableObject {
                 } else {
                     alertMessage = error.localizedDescription
                 }
+            }
+            DispatchQueue.main.async {
+                isLoading = false
             }
         }
     }

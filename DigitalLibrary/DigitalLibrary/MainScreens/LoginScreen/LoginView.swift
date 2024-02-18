@@ -18,48 +18,53 @@ struct LoginView: View {
                     .padding()
                     .font(.largeTitle)
                     .bold()
-
-                TextInputView(title: "Email",
-                              placeholder: "Enter email",
-                              imageName: "person",
-                              isValid: $viewModel.emailIsValid,
-                              text: $viewModel.email,
-                              fieldValidator: viewModel.validateEmail)
-                TextInputView(title: "Password",
-                              placeholder: "Enter password",
-                              imageName: "lock",
-                              isSecure: true,
-                              isValid: $viewModel.passwordIsValid,
-                              text: $viewModel.password,
-                              fieldValidator: viewModel.validatePassword)
-
-                Button("Sign In") {
-                    viewModel.signIn()
+                ScrollView {
+                    if viewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        TextInputView(title: "Email",
+                                      placeholder: "Enter email",
+                                      imageName: "person",
+                                      isValid: $viewModel.emailIsValid,
+                                      text: $viewModel.email,
+                                      fieldValidator: viewModel.validateEmail)
+                        TextInputView(title: "Password",
+                                      placeholder: "Enter password",
+                                      imageName: "lock",
+                                      isSecure: true,
+                                      isValid: $viewModel.passwordIsValid,
+                                      text: $viewModel.password,
+                                      fieldValidator: viewModel.validatePassword)
+                        
+                        Button("Sign In") {
+                            viewModel.signIn()
+                        }
+                        .alert(viewModel.alertMessage, isPresented: $viewModel.showingAlert) {
+                            Button("OK", role: .cancel) { }
+                        }
+                        .padding()
+                        .frame(width: 275, height: 50)
+                        .background(viewModel.formIsValid ? .purple.opacity(0.9) : .purple.opacity(0.5))
+                        .foregroundColor(.white)
+                        .cornerRadius(30)
+                        .disabled(!viewModel.formIsValid)
+                        
+                        HStack {
+                            Text("Don't have an account?")
+                                .foregroundColor(.black.opacity(0.8))
+                            NavigationLink("Sign Up",
+                                           destination: SignUpView(viewModel: SignUpViewModel(
+                                            appRootManager: viewModel.appRootManager,
+                                            authenticationProvider: viewModel.authenticationProvider,
+                                            usersProvider: viewModel.userProvider
+                                           ))
+                            )
+                            .foregroundColor(.blue)
+                            .navigationBarTitleDisplayMode(.inline)
+                        }
+                        .padding()
+                    }
                 }
-                .alert(viewModel.alertMessage, isPresented: $viewModel.showingAlert) {
-                    Button("OK", role: .cancel) { }
-                }
-                .padding()
-                .frame(width: 275, height: 50)
-                .background(viewModel.formIsValid ? .purple.opacity(0.9) : .purple.opacity(0.5))
-                .foregroundColor(.white)
-                .cornerRadius(30)
-                .disabled(!viewModel.formIsValid)
-
-                HStack {
-                    Text("Don't have an account?")
-                        .foregroundColor(.black.opacity(0.8))
-                    NavigationLink("Sign Up", 
-                                   destination: SignUpView(viewModel: SignUpViewModel(
-                                    appRootManager: viewModel.appRootManager,
-                                    authenticationProvider: viewModel.authenticationProvider,
-                                    usersProvider: viewModel.userProvider
-                                   ))
-                    )
-                        .foregroundColor(.blue)
-                        .navigationBarTitleDisplayMode(.inline)
-                }
-                .padding()
             }
             .padding()
             Spacer()

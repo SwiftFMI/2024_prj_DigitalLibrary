@@ -18,9 +18,6 @@ final class BookDetailsViewModel: ObservableObject {
     private let userProvider: UserProvidable
     private let authenticationProvider: AuthenticationProvidable
 
-    private let userProvider: UserProvidable
-    private let authenticationProvider: AuthenticationProvidable
-
     var photo: Data? {
         book.photo
     }
@@ -62,7 +59,7 @@ final class BookDetailsViewModel: ObservableObject {
 
     func addToMyBooks() {
         book.isTaken = true
-        booksProvider.update(book: book, with: authenticationProvider.getCurrentUserID() ?? "")
+        booksProvider.update(book, originalID: book.id)
         userProvider.addBookInReading(book)
         updateButtonState()
         sendLocalNotification()

@@ -12,11 +12,20 @@ struct BookListCell: View {
 
     var body: some View {
         HStack {
-            Image(book.photo ?? "brave_new_world")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 70, height: 90)
-                .cornerRadius(8)
+            if let photo = book.photo,
+               let image = UIImage(data: photo) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 70, height: 90)
+                        .cornerRadius(8)
+                } else {
+                    Image("default_book_cover")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 70, height: 90)
+                        .cornerRadius(8)
+                }
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(book.title)

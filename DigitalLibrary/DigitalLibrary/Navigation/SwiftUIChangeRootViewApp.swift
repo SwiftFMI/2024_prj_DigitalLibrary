@@ -27,7 +27,8 @@ struct SwiftUIChangeRootViewApp: App {
                 case .main:
                     MainTabbedView(viewModel: .init(authenticationProvider: authenticationProvider,
                                                     userProvider: userProvider,
-                                                    booksProvider: booksProvider))
+                                                    booksProvider: booksProvider,
+                                                    imagesProvider: imagesProvider))
                 }
             }
             .onAppear {

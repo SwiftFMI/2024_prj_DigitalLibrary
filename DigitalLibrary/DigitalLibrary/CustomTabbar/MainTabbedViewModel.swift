@@ -13,14 +13,17 @@ final class MainTabbedViewModel: ObservableObject {
     let authenticationProvider: AuthenticationProvidable
     let userProvider: UserProvidable
     let booksProvider: BooksProvidable
+    let imagesProvider: ImagesProvidable
 
     init(authenticationProvider: AuthenticationProvidable,
          userProvider: UserProvidable,
          booksProvider: BooksProvidable,
+         imagesProvider: ImagesProvidable,
          selectedTab: Int = 0) {
         self.authenticationProvider = authenticationProvider
         self.userProvider = userProvider
         self.booksProvider = booksProvider
+        self.imagesProvider = imagesProvider
         self.selectedTab = selectedTab
 
         guard let id = authenticationProvider.getCurrentUserID() else { return }
