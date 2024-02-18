@@ -12,7 +12,7 @@ protocol BooksProvidable {
     func create(_ book: Book)
     func getAll() async -> [Book]?
     func get(_ id: String) async -> Book?
-    func update(_ book: Book)
+    func update(book: Book, with id: String)
     func delete(_ id: String)
 }
 
@@ -70,8 +70,8 @@ final class BooksRepository: BooksProvidable  {
         }
     }
 
-    func update(_ book: Book) {
-        reference?.childByAutoId().setValue(book.toDictionary())
+    func update(book: Book, with id: String) {
+        reference?.child(id).setValue(book.toDictionary())
     }
 
     func delete(_ id: String) {

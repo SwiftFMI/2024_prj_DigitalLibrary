@@ -20,7 +20,7 @@ final class BooksRepositoryMock: BooksProvidable {
         return books.first(where: { $0.title == title })
     }
 
-    func update(_ book: Book) {
+    func update(book: Book, with _: String) {
         if let index = books.firstIndex(where: { $0.title == book.title }) {
             books[index] = book
         }
