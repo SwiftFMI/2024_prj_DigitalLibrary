@@ -21,9 +21,15 @@ final class LibraryViewModel: ObservableObject {
 
     var filteredBooks: [Book] {
         if searchText.isEmpty {
-            return booksForSelectedScope()
+            return books
         } else {
-            return booksForSelectedScope().filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+            switch selectedScope {
+            case 0: return books.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+            case 1: return books.filter { $0.author.localizedCaseInsensitiveContains(searchText) }
+            case 2: return books.filter { $0.publisher.localizedCaseInsensitiveContains(searchText) }
+            case 3: return books.filter { String($0.year).localizedCaseInsensitiveContains(searchText) }
+            default: return books
+            }
         }
     }
 
@@ -53,27 +59,6 @@ final class LibraryViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.isLoading = false
             }
-        }
-    }
-
-    private func booksForSelectedScope() -> [Book] {
-        switch selectedScope {
-        case 0: return books
-        case 1: return groupBooks(by: \.author)
-        case 2: return groupBooks(by: \.publisher)
-        case 3: return groupBooks(by: \.year)
-        default: return books
-        }
-    }
-}
-
-extension LibraryViewModel {
-    private func groupBooks<T: Hashable>(by keyPath: KeyPath<Book, T>) -> [Book] {
-        let groupedBooks = Dictionary(grouping: books, by: { $0[keyPath: keyPath] })
-        if let selectedValue = books.first?[keyPath: keyPath] {
-            return groupedBooks[selectedValue] ?? []
-        } else {
-            return []
         }
     }
 }
