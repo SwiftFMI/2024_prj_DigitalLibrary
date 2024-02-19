@@ -26,7 +26,9 @@ struct MainTabbedView: View {
                 StatisticsView(viewModel: StatisticsViewModel())
                     .tag(2)
 
-                ProfileView()
+                ProfileView(viewModel: .init(//appRootManager: appRootManager,
+                                             authenticationProvider: viewModel.authenticationProvider,
+                                             usersProvider: viewModel.userProvider))
                     .tag(3)
             }
 
