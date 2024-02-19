@@ -19,6 +19,8 @@
 		93EED1932B80D3BB003F77B7 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1922B80D3BB003F77B7 /* LibraryViewModel.swift */; };
 		93EED1962B80D811003F77B7 /* BookDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1952B80D811003F77B7 /* BookDetailsViewModel.swift */; };
 		93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */; };
+		D005812B2B83FB2E00F41748 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005812A2B83FB2E00F41748 /* CameraView.swift */; };
+		D005812D2B83FB5A00F41748 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005812C2B83FB5A00F41748 /* DataScannerRepresentable.swift */; };
 		D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */; };
 		D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */; };
 		D007C3EE2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */; };
@@ -77,6 +79,8 @@
 		93EED1922B80D3BB003F77B7 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		93EED1952B80D811003F77B7 /* BookDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewModel.swift; sourceTree = "<group>"; };
 		93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedViewModel.swift; sourceTree = "<group>"; };
+		D005812A2B83FB2E00F41748 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		D005812C2B83FB5A00F41748 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
 		D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtonsViewModel.swift; sourceTree = "<group>"; };
 		D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChartViewModel.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		9394C1E72B6507FF005D6D83 /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
+				D00581292B83FB0400F41748 /* BarcodeScanner */,
 				DA0994752B7279BF008FE0B3 /* SignUpScreen */,
 				DAE5DF472B6FAF3A00A09560 /* RootScreen */,
 				DAE5DF402B6EE0BE00A09560 /* LoginScreen */,
@@ -216,6 +221,15 @@
 				93EED1952B80D811003F77B7 /* BookDetailsViewModel.swift */,
 			);
 			path = BookDetailsScreen;
+			sourceTree = "<group>";
+		};
+		D00581292B83FB0400F41748 /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				D005812A2B83FB2E00F41748 /* CameraView.swift */,
+				D005812C2B83FB5A00F41748 /* DataScannerRepresentable.swift */,
+			);
+			path = BarcodeScanner;
 			sourceTree = "<group>";
 		};
 		D021705C2B60624800B95F47 = {
@@ -471,12 +485,14 @@
 				9394C1F62B650C2F005D6D83 /* TabbedItems.swift in Sources */,
 				DAF765A42B66E74200BA04EF /* Encodable+Extension.swift in Sources */,
 				DAE5DF492B6FAF4B00A09560 /* RootView.swift in Sources */,
+				D005812B2B83FB2E00F41748 /* CameraView.swift in Sources */,
 				9394C1F82B650CA0005D6D83 /* MainTabbedView.swift in Sources */,
 				DA17C6D92B72D43D00FBAEF5 /* Validator.swift in Sources */,
 				9394C1EF2B6508AE005D6D83 /* MyBooksView.swift in Sources */,
 				DA17C6DD2B737FE700FBAEF5 /* UserRepository.swift in Sources */,
 				DAE5DF462B6F923200A09560 /* LoginViewModel.swift in Sources */,
 				D007C3F02B835C8800AF4489 /* StatisticsBarChartViewModel.swift in Sources */,
+				D005812D2B83FB5A00F41748 /* DataScannerRepresentable.swift in Sources */,
 				9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */,
 				93EED1962B80D811003F77B7 /* BookDetailsViewModel.swift in Sources */,
 				DAF765A22B66E73100BA04EF /* AuthenticationRepository.swift in Sources */,
@@ -627,8 +643,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DigitalLibrary/Preview Content\"";
+				DEVELOPMENT_TEAM = U34TKNJ9GK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Barcode Scanning";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -640,7 +658,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FMI.DigitalLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FMI.DigitalLibrary.desi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -656,8 +674,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DigitalLibrary/Preview Content\"";
+				DEVELOPMENT_TEAM = U34TKNJ9GK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Barcode Scanning";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -669,7 +689,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FMI.DigitalLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FMI.DigitalLibrary.desi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -13,6 +13,8 @@ final class LibraryViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var selectedScope = 0
     @Published var areBooksFetched = false
+    @Published var isScanning: Bool = false
+    @Published var scannedText: String = ""
 
     private var books: [Book] = []
     let booksProvider: BooksProvidable
