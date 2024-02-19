@@ -7,19 +7,43 @@
 
 import Foundation
 
-struct Book: Codable, Hashable, Identifiable {
-    var id = UUID().uuidString
-
+struct Book: Codable, Hashable {
+    let id: String
     let title: String
     let description: String
     let author: String
     let publisher: String
     let year: Int
-    var genre: String? = nil
+    let genre: String?
+    let returningDeadline: Date?
+    let photo: Data?
+
 //    let qrcode: String? // don't know how to configure it, so for it will be nil
 //    let isbn: String? // don't know how to configure it, so for it will be nil
-    let photo: String?
 
     var isTaken: Bool = false
-    var returningDeadline: Date? = nil
+
+    init(id: String? = nil,
+         title: String,
+         description: String,
+         author: String,
+         publisher: String,
+         year: Int,
+         genre: String? = nil,
+         returningDeadline: Date? = nil,
+         photo: Data? = nil) {
+        if let id {
+            self.id = id
+        } else {
+            self.id = UUID().uuidString
+        }
+        self.title = title
+        self.description = description
+        self.author = author
+        self.publisher = publisher
+        self.year = year
+        self.genre = genre
+        self.returningDeadline = returningDeadline
+        self.photo = photo
+    }
 }

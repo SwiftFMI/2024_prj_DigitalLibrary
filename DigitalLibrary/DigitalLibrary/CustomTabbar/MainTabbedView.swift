@@ -16,7 +16,8 @@ struct MainTabbedView: View {
             TabView(selection: $viewModel.selectedTab) {
                 LibraryView(viewModel: .init(booksProvider: viewModel.booksProvider,
                                              userProvider: viewModel.userProvider,
-                                             authenticationProvider: viewModel.authenticationProvider))
+                                             authenticationProvider: viewModel.authenticationProvider, 
+                                             imagesProvider: viewModel.imagesProvider))
                     .tag(0)
 
                 MyBooksView()
@@ -79,6 +80,7 @@ struct MainTabbedView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabbedView(viewModel: .init(authenticationProvider: AuthenticationRepositoryMock(),
                                         userProvider: UserRepositoryMock(),
-                                        booksProvider: BooksRepositoryMock()))
+                                        booksProvider: BooksRepositoryMock(),
+                                        imagesProvider: BookCoversRepository()))
     }
 }

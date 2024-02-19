@@ -46,7 +46,7 @@ final class UserRepository: UserProvidable {
     }
 
     func createUser(_ user: UserModel) {
-        reference?.setValue(user.toDictionary())
+        reference?.child(user.id).setValue(user.toDictionary())
     }
 
     func getCurrentUser() async -> UserModel? {

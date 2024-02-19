@@ -12,14 +12,25 @@ struct BookDetailsView: View {
 
     var body: some View {
         ScrollView {
-            Image(viewModel.photo)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(12)
-                .shadow(radius: 5)
-                .padding(.horizontal, 80)
-                .padding(.vertical, 25)
-            
+            if let photo = viewModel.photo,
+               let image = UIImage(data: photo) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+                    .padding(.horizontal, 80)
+                    .padding(.vertical, 25)
+            } else {
+                Image("default_book_cover")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+                    .padding(.horizontal, 80)
+                    .padding(.vertical, 25)
+            }
+
             VStack(spacing: 8) {
                 Text(viewModel.title)
                     .font(.title)
@@ -58,8 +69,8 @@ struct BookDetailsView: View {
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         BookDetailsView(viewModel: .init(book: BooksMockData.books[0],
-                                         booksProvider: BooksRepository(),
-                                         userProvider: UserRepository(),
-                                         authenticationProvider: AuthenticationRepository()))
+                                         booksProvider: BooksRepositoryMock(),
+                                         userProvider: UserRepositoryMock(),
+                                         authenticationProvider: AuthenticationRepositoryMock()))
     }
 }

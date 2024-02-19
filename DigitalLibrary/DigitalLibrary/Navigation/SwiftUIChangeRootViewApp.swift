@@ -14,6 +14,7 @@ struct SwiftUIChangeRootViewApp: App {
     private let authenticationProvider: AuthenticationProvidable = AuthenticationRepository()
     private let userProvider: UserProvidable = UserRepository()
     private let booksProvider: BooksProvidable = BooksRepository()
+    private let imagesProvider = BookCoversRepository()
     private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
@@ -27,7 +28,8 @@ struct SwiftUIChangeRootViewApp: App {
                 case .main:
                     MainTabbedView(viewModel: .init(authenticationProvider: authenticationProvider,
                                                     userProvider: userProvider,
-                                                    booksProvider: booksProvider))
+                                                    booksProvider: booksProvider,
+                                                    imagesProvider: imagesProvider))
                 }
             }
             .onAppear {

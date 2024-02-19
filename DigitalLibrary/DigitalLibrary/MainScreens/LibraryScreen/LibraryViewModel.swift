@@ -16,6 +16,7 @@ final class LibraryViewModel: ObservableObject {
 
     private var books: [Book] = []
     let booksProvider: BooksProvidable
+    let imagesProvider: ImagesProvidable
     let userProvider: UserProvidable
     let authenticationProvider: AuthenticationProvidable
 
@@ -33,10 +34,14 @@ final class LibraryViewModel: ObservableObject {
         }
     }
 
-    init(booksProvider: BooksProvidable, userProvider: UserProvidable, authenticationProvider: AuthenticationProvidable) {
+    init(booksProvider: BooksProvidable,
+         userProvider: UserProvidable,
+         authenticationProvider: AuthenticationProvidable,
+         imagesProvider: ImagesProvidable) {
         self.booksProvider = booksProvider
         self.userProvider = userProvider
         self.authenticationProvider = authenticationProvider
+        self.imagesProvider = imagesProvider
     }
 
     func getAllBooks() {
@@ -45,18 +50,20 @@ final class LibraryViewModel: ObservableObject {
         isLoading = true
 
         Task {
-            do {
-                if let fetchedBooks = await booksProvider.getAll() {
-                    books = fetchedBooks
-                    DispatchQueue.main.async {
-                        self.areBooksFetched = true
-                    }
-                } else {
-                    books = []
-                }
-            }
+            books = await booksProvider.getAll()?
+                .asyncMap { book in
+                    let photo = try? await imagesProvider.downloadImage("\(book.title).jpg")
+
+                    return Book(title: book.title,
+                                description: book.description,
+                                author: book.author,
+                                publisher: book.publisher,
+                                year: book.year,
+                                photo: photo)
+                } ?? []
 
             DispatchQueue.main.async {
+                self.areBooksFetched = true
                 self.isLoading = false
             }
         }
