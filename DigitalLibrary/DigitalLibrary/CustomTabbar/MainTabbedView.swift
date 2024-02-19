@@ -22,7 +22,7 @@ struct MainTabbedView: View {
                 MyBooksView()
                     .tag(1)
 
-                StatisticsView()
+                StatisticsView(viewModel: StatisticsViewModel())
                     .tag(2)
 
                 ProfileView()
