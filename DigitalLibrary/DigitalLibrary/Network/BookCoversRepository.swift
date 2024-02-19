@@ -13,6 +13,7 @@ protocol ImagesProvidable {
 }
 
 final class BookCoversRepository: ImagesProvidable {
+    private var cachedImages: [String: Data?] = [:]
     private lazy var reference = {
         let ref = Storage
             .storage()
@@ -26,13 +27,20 @@ final class BookCoversRepository: ImagesProvidable {
     }
 
     func downloadImage(_ title: String) async throws -> Data {
+        if let image = cachedImages[title] {
+            return image!
+        }
+
         let result = await withCheckedContinuation { continuation in
             downloadImage(title) { user in
                 continuation.resume(returning: user)
             }
         }
 
-        return try result.get()
+        let image = try result.get()
+        cachedImages[title] = image
+
+        return image
     }
 
     private func downloadImage(_ title: String, completion: @escaping (Result<Data, Error>) -> Void) {
