@@ -35,6 +35,9 @@ struct LibraryView: View {
                     }
                 }
             }
+            .sheet(isPresented: $viewModel.isScanning) {
+                CameraView(isScanning: $viewModel.isScanning, scannedText: $viewModel.scannedText)
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -49,7 +52,8 @@ struct LibraryView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        // The scanner screen is attached here
+                        viewModel.scannedText = ""
+                        viewModel.isScanning = true
                     }) {
                         Image(systemName: "qrcode.viewfinder")
                             .foregroundColor(.purple.opacity(0.6))
