@@ -60,7 +60,8 @@ final class LibraryViewModel: ObservableObject {
                                 author: book.author,
                                 publisher: book.publisher,
                                 year: book.year,
-                                photo: photo)
+                                photo: photo,
+                                isTaken: book.isTaken)
                 } ?? []
 
             DispatchQueue.main.async {
