@@ -15,7 +15,7 @@ struct StatisticsPointChart: View {
         Chart {
             ForEach(viewModel.books.sorted(by: { book1, book2 in
                 book1.returningDeadline ?? Date() < book2.returningDeadline ?? Date()
-            })) { book in
+            }), id: \.self) { book in
                 PointMark(x: .value("Deadline", book.returningDeadline ?? Date()),
                           y: .value("Book", book.title))
                     .annotation(position: .trailing, alignment: .leading) {
