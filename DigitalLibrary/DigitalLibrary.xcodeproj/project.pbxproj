@@ -48,6 +48,9 @@
 		DA25BFCB2B78C81100B6F03C /* UserRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFCA2B78C81100B6F03C /* UserRepositoryMock.swift */; };
 		DA25BFCD2B78D92200B6F03C /* BooksRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFCC2B78D92200B6F03C /* BooksRepositoryMock.swift */; };
 		DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25BFD62B7ACF3D00B6F03C /* BooksMockData.swift */; };
+		DA25C0082B83330800B6F03C /* BookCoversRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25C0072B83330800B6F03C /* BookCoversRepository.swift */; };
+		DA25C00D2B83333A00B6F03C /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25C00C2B83333A00B6F03C /* Sequence+Extension.swift */; };
+		DA25C0112B83352C00B6F03C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DA25C0102B83352C00B6F03C /* FirebaseStorage */; };
 		DAE5DF422B6EE0E100A09560 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF412B6EE0E100A09560 /* LoginView.swift */; };
 		DAE5DF442B6EE15800A09560 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF432B6EE15800A09560 /* TextInputView.swift */; };
 		DAE5DF462B6F923200A09560 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE5DF452B6F923200A09560 /* LoginViewModel.swift */; };
@@ -104,6 +107,8 @@
 		DA25BFCA2B78C81100B6F03C /* UserRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryMock.swift; sourceTree = "<group>"; };
 		DA25BFCC2B78D92200B6F03C /* BooksRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepositoryMock.swift; sourceTree = "<group>"; };
 		DA25BFD62B7ACF3D00B6F03C /* BooksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMockData.swift; sourceTree = "<group>"; };
+		DA25C0072B83330800B6F03C /* BookCoversRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoversRepository.swift; sourceTree = "<group>"; };
+		DA25C00C2B83333A00B6F03C /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		DAE5DF412B6EE0E100A09560 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DAE5DF432B6EE15800A09560 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		DAE5DF452B6F923200A09560 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAF765AD2B66E80900BA04EF /* FirebaseDatabase in Frameworks */,
+				DA25C0112B83352C00B6F03C /* FirebaseStorage in Frameworks */,
 				DAF765AB2B66E80900BA04EF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +224,7 @@
 				DAF765A72B66E7B800BA04EF /* GoogleService-Info.plist */,
 				D02170672B60624800B95F47 /* DigitalLibrary */,
 				D02170662B60624800B95F47 /* Products */,
+				DA25C0092B83332400B6F03C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,6 +331,13 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
+		DA25C0092B83332400B6F03C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DAE5DF402B6EE0BE00A09560 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +363,8 @@
 				DAF765A52B66E76500BA04EF /* BookRepository.swift */,
 				DAF765AE2B66F6E700BA04EF /* FirebaseConfiguration.swift */,
 				DA17C6DC2B737FE700FBAEF5 /* UserRepository.swift */,
+				DA25C0072B83330800B6F03C /* BookCoversRepository.swift */,
+				DA25C00C2B83333A00B6F03C /* Sequence+Extension.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -372,6 +388,7 @@
 			packageProductDependencies = (
 				DAF765AA2B66E80900BA04EF /* FirebaseAuth */,
 				DAF765AC2B66E80900BA04EF /* FirebaseDatabase */,
+				DA25C0102B83352C00B6F03C /* FirebaseStorage */,
 			);
 			productName = DigitalLibrary;
 			productReference = D02170652B60624800B95F47 /* DigitalLibrary.app */;
@@ -473,6 +490,8 @@
 				DA17C6C52B72817200FBAEF5 /* AppRootManager.swift in Sources */,
 				D01889972B8272C1004DF83E /* StatisticsButtons.swift in Sources */,
 				93E688262B7ED3AD007CB34A /* BookDetailsView.swift in Sources */,
+				DA25C0082B83330800B6F03C /* BookCoversRepository.swift in Sources */,
+				DA25C00D2B83333A00B6F03C /* Sequence+Extension.swift in Sources */,
 				DAF765A62B66E76500BA04EF /* BookRepository.swift in Sources */,
 				DAE5DF422B6EE0E100A09560 /* LoginView.swift in Sources */,
 				D0EED6562B62AEE900410E79 /* User.swift in Sources */,
@@ -693,6 +712,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DA25C0102B83352C00B6F03C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAF765A92B66E80900BA04EF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		DAF765AA2B66E80900BA04EF /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DAF765A92B66E80900BA04EF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
