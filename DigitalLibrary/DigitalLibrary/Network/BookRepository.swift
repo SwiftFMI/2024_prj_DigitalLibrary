@@ -78,7 +78,7 @@ final class BooksRepository: BooksProvidable  {
                                author: book.author,
                                publisher: book.publisher,
                                year: book.year,
-                               photo: book.photo)
+                               photo: nil)
         reference?.child(originalID).setValue(updatedBook.toDictionary())
     }
 

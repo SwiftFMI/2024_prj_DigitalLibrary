@@ -40,7 +40,7 @@ struct LoginView: View {
                                           text: $viewModel.password,
                                           fieldValidator: viewModel.validatePassword)
                                 .focused($focusedField, equals: Field.password)
-                                .submitLabel(.continue)
+                                .submitLabel(.done)
 
                             Button("Sign In") {
                                 viewModel.signIn()

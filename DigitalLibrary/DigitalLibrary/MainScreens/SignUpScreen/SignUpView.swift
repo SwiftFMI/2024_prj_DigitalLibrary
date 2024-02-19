@@ -66,8 +66,8 @@ struct SignUpView: View {
                                   isValid: $viewModel.confirmPasswordIsValid,
                                   text: $viewModel.confirmPassword,
                                   fieldValidator: viewModel.validateConfirmPassword)
-                    .focused($focusedField, equals: Field.firstName)
-                    .submitLabel(.continue)
+                    .focused($focusedField, equals: Field.confirmPassword)
+                    .submitLabel(.done)
 
                     Button("Sign Up") {
                         viewModel.signUp()
@@ -81,21 +81,21 @@ struct SignUpView: View {
                     .foregroundColor(.white)
                     .cornerRadius(30)
                     .disabled(!viewModel.formIsValid)
-                    .onSubmit {
-                        switch focusedField {
-                        case .firstName:
-                            focusedField = .lastName
-                        case .lastName:
-                            focusedField = .phoneNumber
-                        case .phoneNumber:
-                            focusedField = .email
-                        case .email:
-                            focusedField = .password
-                        case .password:
-                            focusedField = .confirmPassword
-                        default:
-                            break
-                        }
+                }
+                .onSubmit {
+                    switch focusedField {
+                    case .firstName:
+                        focusedField = .lastName
+                    case .lastName:
+                        focusedField = .phoneNumber
+                    case .phoneNumber:
+                        focusedField = .email
+                    case .email:
+                        focusedField = .password
+                    case .password:
+                        focusedField = .confirmPassword
+                    default:
+                        break
                     }
                 }
             }
