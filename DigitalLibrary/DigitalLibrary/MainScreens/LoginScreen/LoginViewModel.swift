@@ -7,7 +7,18 @@
 
 import SwiftUI
 
+enum Field {
+    case firstName
+    case lastName
+    case phoneNumber
+    case email
+    case password
+    case confirmPassword
+}
+
 final class LoginViewModel: ObservableObject {
+
+
     @ObservedObject private(set) var appRootManager: AppRootManager
 
     private(set) var authenticationProvider: AuthenticationProvidable
@@ -15,6 +26,8 @@ final class LoginViewModel: ObservableObject {
 
     private var startedEditingEmail = false
     private var startedEditingPassword = false
+
+    @Published var keyboardHeight: CGFloat = 0
 
     @Published var emailIsValid = true {
         didSet {
@@ -77,9 +90,8 @@ final class LoginViewModel: ObservableObject {
                     alertMessage = error.localizedDescription
                 }
             }
-            DispatchQueue.main.async {
-                isLoading = false
-            }
+
+            self.isLoading = false
         }
     }
 }

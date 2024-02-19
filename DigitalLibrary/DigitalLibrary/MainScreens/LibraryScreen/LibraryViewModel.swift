@@ -50,18 +50,20 @@ final class LibraryViewModel: ObservableObject {
         isLoading = true
 
         Task {
-            do {
-                if let fetchedBooks = await booksProvider.getAll() {
-                    books = fetchedBooks
-                    DispatchQueue.main.async {
-                        self.areBooksFetched = true
-                    }
-                } else {
-                    books = []
-                }
-            }
+            books = await booksProvider.getAll()?
+                .asyncMap { book in
+                    let photo = try? await imagesProvider.downloadImage("\(book.title).jpg")
+
+                    return Book(title: book.title,
+                                description: book.description,
+                                author: book.author,
+                                publisher: book.publisher,
+                                year: book.year,
+                                photo: photo)
+                } ?? []
 
             DispatchQueue.main.async {
+                self.areBooksFetched = true
                 self.isLoading = false
             }
         }

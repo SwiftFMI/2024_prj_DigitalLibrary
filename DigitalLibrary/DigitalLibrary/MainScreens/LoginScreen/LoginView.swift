@@ -9,16 +9,16 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
+    @FocusState var focusedField: Field?
 
     var body: some View {
         NavigationStack() {
-            Spacer()
-            VStack(spacing: 10) {
-                Text("Login")
-                    .padding()
-                    .font(.largeTitle)
-                    .bold()
-                ScrollView {
+            ScrollView {
+                VStack(spacing: 10) {
+                    Text("Login")
+                        .padding()
+                        .font(.largeTitle)
+                        .bold()
                     if viewModel.isLoading {
                         ProgressView()
                     } else {
@@ -28,6 +28,9 @@ struct LoginView: View {
                                       isValid: $viewModel.emailIsValid,
                                       text: $viewModel.email,
                                       fieldValidator: viewModel.validateEmail)
+                        .focused($focusedField, equals: Field.email)
+                        .submitLabel(.next)
+
                         TextInputView(title: "Password",
                                       placeholder: "Enter password",
                                       imageName: "lock",
@@ -35,7 +38,9 @@ struct LoginView: View {
                                       isValid: $viewModel.passwordIsValid,
                                       text: $viewModel.password,
                                       fieldValidator: viewModel.validatePassword)
-                        
+                        .focused($focusedField, equals: Field.password)
+                        .submitLabel(.continue)
+
                         Button("Sign In") {
                             viewModel.signIn()
                         }
@@ -48,7 +53,7 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .cornerRadius(30)
                         .disabled(!viewModel.formIsValid)
-                        
+
                         HStack {
                             Text("Don't have an account?")
                                 .foregroundColor(.black.opacity(0.8))
@@ -62,12 +67,20 @@ struct LoginView: View {
                             .foregroundColor(.blue)
                             .navigationBarTitleDisplayMode(.inline)
                         }
-                        .padding()
+                    }
+                }
+                .onSubmit {
+                    switch focusedField {
+                    case .email:
+                        focusedField = .password
+                    default:
+                        break
                     }
                 }
             }
-            .padding()
-            Spacer()
+            .padding(.top, 150)
+            .navigationTitle("Login")
+            .navigationBarHidden(true)
         }
     }
 }

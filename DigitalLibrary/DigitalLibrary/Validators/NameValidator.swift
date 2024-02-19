@@ -12,7 +12,7 @@ final class NameValidator: EmptyValidator {
         let notEmptyName = try super.validate(input)
 
         if !isName(notEmptyName) {
-            throw UserDataError.invalidPhoneNumber
+            throw UserDataError.invalidName
         }
         return notEmptyName
     }

@@ -81,6 +81,6 @@ struct MainTabbedView_Previews: PreviewProvider {
         MainTabbedView(viewModel: .init(authenticationProvider: AuthenticationRepositoryMock(),
                                         userProvider: UserRepositoryMock(),
                                         booksProvider: BooksRepositoryMock(),
-                                        imagesProvider: BookCoversRepositoryMock()))
+                                        imagesProvider: BookCoversRepository()))
     }
 }

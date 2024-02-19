@@ -28,6 +28,8 @@ final class SignUpViewModel: ObservableObject {
     private var startedEditingPassword = false
     private var startedEditingConfirmPassword = false
 
+    @Published var isLoading = false
+
     @Published var firstNameIsValid = true {
         didSet {
             if firstNameIsValid == true {
@@ -118,6 +120,8 @@ final class SignUpViewModel: ObservableObject {
     }
 
     func signUp() {
+        isLoading = true
+
         Task {
             do {
                 try await authenticationProvider.signUp(emailAddress: email, password: password)
@@ -135,6 +139,8 @@ final class SignUpViewModel: ObservableObject {
                 showingAlert = true
                 alertMessage = error.localizedDescription
             }
+
+            isLoading = false
         }
     }
 }
