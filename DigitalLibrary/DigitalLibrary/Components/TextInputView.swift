@@ -47,7 +47,6 @@ struct TextInputView: View {
                     if !isSecure {
                         TextField(placeholder, text: $text)
                             .disableAutocorrection(true)
-                            .autocapitalization(.none)
 
                     } else {
                         SecureField(placeholder, text: $text)

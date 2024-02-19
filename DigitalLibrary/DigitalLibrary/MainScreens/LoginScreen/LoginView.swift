@@ -31,6 +31,8 @@ struct LoginView: View {
                                           fieldValidator: viewModel.validateEmail)
                                 .focused($focusedField, equals: Field.email)
                                 .submitLabel(.next)
+                                .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
 
                             TextInputView(title: "Password",
                                           placeholder: "Enter password",
@@ -41,6 +43,7 @@ struct LoginView: View {
                                           fieldValidator: viewModel.validatePassword)
                                 .focused($focusedField, equals: Field.password)
                                 .submitLabel(.done)
+                                .autocapitalization(.none)
 
                             Button("Sign In") {
                                 viewModel.signIn()
@@ -81,6 +84,9 @@ struct LoginView: View {
                 }
                 .navigationTitle("")
                 .navigationBarHidden(false)
+            }
+            .onTapGesture {
+                hideKeyboard()
             }
         }
     }

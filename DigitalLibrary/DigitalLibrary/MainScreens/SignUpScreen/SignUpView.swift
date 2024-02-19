@@ -26,6 +26,7 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validateFirstName)
                     .focused($focusedField, equals: Field.firstName)
                     .submitLabel(.next)
+                    .autocapitalization(.words)
 
                     TextInputView(title: "Last name",
                                   placeholder: "Enter last name",
@@ -34,6 +35,7 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validateLastName)
                     .focused($focusedField, equals: Field.lastName)
                     .submitLabel(.next)
+                    .autocapitalization(.words)
 
                     TextInputView(title: "Phone number",
                                   placeholder: "Enter phone number",
@@ -42,6 +44,8 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validatePhoneNumber)
                     .focused($focusedField, equals: Field.phoneNumber)
                     .submitLabel(.next)
+                    .keyboardType(.phonePad)
+                    .autocapitalization(.none)
 
                     TextInputView(title: "Email",
                                   placeholder: "Enter email",
@@ -50,6 +54,8 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validateEmail)
                     .focused($focusedField, equals: Field.email)
                     .submitLabel(.next)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
 
                     TextInputView(title: "Password",
                                   placeholder: "Enter password",
@@ -59,6 +65,7 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validatePassword)
                     .focused($focusedField, equals: Field.password)
                     .submitLabel(.next)
+                    .autocapitalization(.none)
 
                     TextInputView(title: "Confirm password",
                                   placeholder: "Enter password again",
@@ -68,6 +75,7 @@ struct SignUpView: View {
                                   fieldValidator: viewModel.validateConfirmPassword)
                     .focused($focusedField, equals: Field.confirmPassword)
                     .submitLabel(.done)
+                    .autocapitalization(.none)
 
                     Button("Sign Up") {
                         viewModel.signUp()
@@ -99,6 +107,9 @@ struct SignUpView: View {
                     }
                 }
             }
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
     }
 }
