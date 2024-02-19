@@ -31,7 +31,8 @@ struct Book: Codable, Hashable {
          year: Int,
          genre: String? = nil,
          returningDeadline: Date? = nil,
-         photo: Data? = nil) {
+         photo: Data? = nil,
+         isTaken: Bool) {
         if let id {
             self.id = id
         } else {
@@ -45,5 +46,6 @@ struct Book: Codable, Hashable {
         self.genre = genre
         self.returningDeadline = returningDeadline
         self.photo = photo
+        self.isTaken = isTaken
     }
 }
