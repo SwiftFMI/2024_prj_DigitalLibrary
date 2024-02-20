@@ -14,12 +14,10 @@ struct Book: Codable, Hashable {
     let author: String
     let publisher: String
     let year: Int
-    let genre: String?
+    let genre: String
+    let isbn: String
     let returningDeadline: Date?
     let photo: Data?
-
-//    let qrcode: String? // don't know how to configure it, so for it will be nil
-//    let isbn: String? // don't know how to configure it, so for it will be nil
 
     var isTaken: Bool = false
 
@@ -29,7 +27,8 @@ struct Book: Codable, Hashable {
          author: String,
          publisher: String,
          year: Int,
-         genre: String? = nil,
+         genre: String,
+         isbn: String,
          returningDeadline: Date? = nil,
          photo: Data? = nil,
          isTaken: Bool) {
@@ -38,12 +37,14 @@ struct Book: Codable, Hashable {
         } else {
             self.id = UUID().uuidString
         }
+
         self.title = title
         self.description = description
         self.author = author
         self.publisher = publisher
         self.year = year
         self.genre = genre
+        self.isbn = isbn
         self.returningDeadline = returningDeadline
         self.photo = photo
         self.isTaken = isTaken

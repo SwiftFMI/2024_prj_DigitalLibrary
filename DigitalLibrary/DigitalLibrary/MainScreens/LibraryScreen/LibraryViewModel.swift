@@ -62,6 +62,8 @@ final class LibraryViewModel: ObservableObject {
                                 author: book.author,
                                 publisher: book.publisher,
                                 year: book.year,
+                                genre: book.genre,
+                                isbn: book.isbn,
                                 photo: photo,
                                 isTaken: book.isTaken)
                 } ?? []
