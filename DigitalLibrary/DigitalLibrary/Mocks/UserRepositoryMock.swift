@@ -25,29 +25,44 @@ final class UserRepositoryMock: UserProvidable {
     }
 
     func addBookInReading(_ book: Book) {
-        currentUser?.readingBooks?.append(book)
+        currentUser?.readingBooks?[book.title] = book
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 
     func addBookInUnfinished(_ book: Book) {
-        currentUser?.unfinishedBooks?.append(book)
+        currentUser?.unfinishedBooks?[book.title] = book
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 
     func addBookInRead(_ book: Book) {
-        currentUser?.readBooks?.append(book)
+        currentUser?.readBooks?[book.title] = book
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 
     func removeBookFromReading(_ book: Book) {
-        let readingBooks = currentUser?.readingBooks?.filter { $0 != book }
-        currentUser?.readingBooks = readingBooks
+        currentUser?.readingBooks?.removeValue(forKey: book.title)
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 
     func removeBookFromUnfinished(_ book: Book) {
-        let unfinishedBooks = currentUser?.unfinishedBooks?.filter { $0 != book }
-        currentUser?.unfinishedBooks = unfinishedBooks
+        currentUser?.unfinishedBooks?.removeValue(forKey: book.title)
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 
     func removeBookFromRead(_ book: Book) {
-        let readBooks = currentUser?.readBooks?.filter { $0 != book}
-        currentUser?.readBooks = readBooks
+        currentUser?.readBooks?.removeValue(forKey: book.title)
+        if let currentUser {
+            updateUser(currentUser)
+        }
     }
 }

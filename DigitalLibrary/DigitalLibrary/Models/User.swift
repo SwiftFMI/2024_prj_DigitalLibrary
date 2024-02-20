@@ -13,7 +13,7 @@ struct UserModel: Codable {
     var lastName: String
     var email: String
     var phone: String
-    var readingBooks: [Book]? = []
-    var unfinishedBooks: [Book]? = []
-    var readBooks: [Book]? = []
+    var readingBooks: [String : Book]? = [:]
+    var unfinishedBooks: [String : Book]? = [:]
+    var readBooks: [String : Book]? = [:]
 }
