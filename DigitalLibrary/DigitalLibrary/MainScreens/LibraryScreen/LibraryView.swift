@@ -34,9 +34,24 @@ struct LibraryView: View {
                         .listStyle(PlainListStyle())
                     }
                 }
+
+                if viewModel.scannedText != "" {
+                    Text("")
+                        .hidden()
+                        .task {
+                            let books = viewModel.books.filter { $0.isbn.localizedCaseInsensitiveContains(viewModel.scannedText) }
+                            if books.count > 0 {
+                                let bookTitle = books.first?.title
+                                viewModel.searchText = bookTitle ?? ""
+                                viewModel.selectedScope = 0
+                            } else {
+                                viewModel.searchText = ""
+                            }
+                        }
+                }
             }
             .sheet(isPresented: $viewModel.isScanning) {
-                CameraView(isScanning: $viewModel.isScanning, scannedText: $viewModel.scannedText)
+                CameraView(isScanning: $viewModel.isScanning, scannedText: $viewModel.scannedText, books: viewModel.books)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

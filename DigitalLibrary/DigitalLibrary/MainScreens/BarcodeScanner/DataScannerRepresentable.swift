@@ -60,4 +60,3 @@ struct DataScannerRepresentable: UIViewControllerRepresentable {
         Coordinator(self)
     }
 }
-
