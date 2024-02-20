@@ -21,6 +21,9 @@
 		93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */; };
 		D005812B2B83FB2E00F41748 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005812A2B83FB2E00F41748 /* CameraView.swift */; };
 		D005812D2B83FB5A00F41748 /* DataScannerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D005812C2B83FB5A00F41748 /* DataScannerRepresentable.swift */; };
+		A53037572B841E5700EBA2B4 /* ProfileInfoFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53037562B841E5700EBA2B4 /* ProfileInfoFieldViewModel.swift */; };
+		A5F0E5692B82881D00D39D27 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0E5682B82881D00D39D27 /* ProfileViewModel.swift */; };
+		A5F0E56B2B828A9A00D39D27 /* ProfileInfoFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0E56A2B828A9A00D39D27 /* ProfileInfoFieldView.swift */; };
 		D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */; };
 		D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */; };
 		D007C3EE2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */; };
@@ -82,6 +85,9 @@
 		93EED1972B820E70003F77B7 /* MainTabbedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedViewModel.swift; sourceTree = "<group>"; };
 		D005812A2B83FB2E00F41748 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		D005812C2B83FB5A00F41748 /* DataScannerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerRepresentable.swift; sourceTree = "<group>"; };
+		A53037562B841E5700EBA2B4 /* ProfileInfoFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoFieldViewModel.swift; sourceTree = "<group>"; };
+		A5F0E5682B82881D00D39D27 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		A5F0E56A2B828A9A00D39D27 /* ProfileInfoFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoFieldView.swift; sourceTree = "<group>"; };
 		D007C3E92B835C5800AF4489 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtonsViewModel.swift; sourceTree = "<group>"; };
 		D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChartViewModel.swift; sourceTree = "<group>"; };
@@ -203,6 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				9394C1F32B6508F7005D6D83 /* ProfileView.swift */,
+				A5F0E5682B82881D00D39D27 /* ProfileViewModel.swift */,
+				A5F0E56A2B828A9A00D39D27 /* ProfileInfoFieldView.swift */,
+				A53037562B841E5700EBA2B4 /* ProfileInfoFieldViewModel.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -482,9 +491,11 @@
 				93EED1982B820E70003F77B7 /* MainTabbedViewModel.swift in Sources */,
 				93EED1932B80D3BB003F77B7 /* LibraryViewModel.swift in Sources */,
 				D007C3EA2B835C5800AF4489 /* StatisticsViewModel.swift in Sources */,
+				A5F0E5692B82881D00D39D27 /* ProfileViewModel.swift in Sources */,
 				DAE5DF442B6EE15800A09560 /* TextInputView.swift in Sources */,
 				9394C1F42B6508F7005D6D83 /* ProfileView.swift in Sources */,
 				D01889952B8272A8004DF83E /* StatisticsBarChart.swift in Sources */,
+				A53037572B841E5700EBA2B4 /* ProfileInfoFieldViewModel.swift in Sources */,
 				9394C1F62B650C2F005D6D83 /* TabbedItems.swift in Sources */,
 				DAF765A42B66E74200BA04EF /* Encodable+Extension.swift in Sources */,
 				DAE5DF492B6FAF4B00A09560 /* RootView.swift in Sources */,
@@ -498,6 +509,7 @@
 				D005812D2B83FB5A00F41748 /* DataScannerRepresentable.swift in Sources */,
 				9394C1F22B6508E0005D6D83 /* StatisticsView.swift in Sources */,
 				93EED1962B80D811003F77B7 /* BookDetailsViewModel.swift in Sources */,
+				A5F0E56B2B828A9A00D39D27 /* ProfileInfoFieldView.swift in Sources */,
 				DAF765A22B66E73100BA04EF /* AuthenticationRepository.swift in Sources */,
 				DA17C6CD2B72D02700FBAEF5 /* EmailValidator.swift in Sources */,
 				DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */,
