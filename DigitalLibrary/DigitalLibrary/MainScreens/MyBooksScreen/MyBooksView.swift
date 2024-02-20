@@ -15,36 +15,46 @@ struct MyBooksView: View {
             VStack {
                 if viewModel.isLoading {
                     ProgressView()
-                } else if viewModel.readingBooks.isEmpty {
+                } else if viewModel.readingBooks.isEmpty && viewModel.readBooks.isEmpty {
                     EmptyLibraryView()
                 } else {
-                    VStack {
-                        List(viewModel.readingBooks, id: \.self) { book in
-                            NavigationLink(destination: BookDetailsView(viewModel:
-                                    .init(book: book,
-                                          booksProvider: viewModel.booksProvider,
-                                          userProvider: viewModel.userProvider,
-                                          authenticationProvider: viewModel.authenticationProvider)
-                            )) {
+                    List {
+                        Section(header: Text(viewModel.firstSectionHeader)) {
+                            ForEach(Array(viewModel.readingBooks.values), id: \.self) { book in
                                 BookListCell(book: book)
-                            }
-                        }
-                        .listStyle(PlainListStyle())
-                    }
+                                    .swipeActions {
+                                        Button(role: .destructive) {
+                                            viewModel.returnBookToLibrary(book)
+                                        } label: {
+                                            Label("Return", systemImage: "arrowshape.turn.up.left")
+                                        }
 
-                    VStack {
-                        List(viewModel.unfinishedBooks, id: \.self) { book in
-                            NavigationLink(destination: BookDetailsView(viewModel:
-                                    .init(book: book,
-                                          booksProvider: viewModel.booksProvider,
-                                          userProvider: viewModel.userProvider,
-                                          authenticationProvider: viewModel.authenticationProvider)
-                            )) {
-                                BookListCell(book: book)
+                                        Button(role: .destructive) {
+                                            viewModel.moveBookToHistory(book)
+                                        } label: {
+                                            Label("Finish", systemImage: "checkmark")
+                                        }
+                                    }
+                                    .tint(.purple.opacity(0.6))
                             }
                         }
-                        .listStyle(PlainListStyle())
+
+                        Section(header: Text(viewModel.secondSectionHeader)) {
+                            ForEach(Array(viewModel.readBooks.values), id: \.self) { book in
+                                BookListCell(book: book)
+                                    .swipeActions {
+                                        Button {
+                                            viewModel.bookToDelete = book
+                                            viewModel.isShowingDeleteAlert = true
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
+                                    .tint(.red)
+                            }
+                        }
                     }
+                    .listStyle(PlainListStyle())
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -61,7 +71,20 @@ struct MyBooksView: View {
             }
             .padding(.bottom, 16)
             .onAppear {
-                viewModel.getAllReadingBooks()
+                viewModel.getAllBooks()
+            }
+            .alert(isPresented: $viewModel.isShowingDeleteAlert) {
+                Alert(
+                    title: Text("Confirm Deletion"),
+                    message: Text("Are you sure you want to remove this book from history?"),
+                    primaryButton: .default(Text("Cancel")),
+                    secondaryButton: .destructive(Text("Delete")) {
+                        if let book = viewModel.bookToDelete {
+                            viewModel.removeBookFromHistory(book)
+                            viewModel.getAllBooks()
+                        }
+                    }
+                )
             }
         }
         .accentColor(.purple)

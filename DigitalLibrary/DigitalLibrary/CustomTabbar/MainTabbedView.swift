@@ -21,9 +21,7 @@ struct MainTabbedView: View {
                     .tag(0)
 
                 MyBooksView(viewModel: .init(booksProvider: viewModel.booksProvider,
-                                             userProvider: viewModel.userProvider,
-                                             imagesProvider: viewModel.imagesProvider,
-                                             authenticationProvider: viewModel.authenticationProvider))
+                                             userProvider: viewModel.userProvider))
                     .tag(1)
 
                 StatisticsView(viewModel: StatisticsViewModel())

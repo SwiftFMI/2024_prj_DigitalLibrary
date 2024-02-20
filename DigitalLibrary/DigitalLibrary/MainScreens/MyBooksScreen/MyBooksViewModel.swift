@@ -9,25 +9,29 @@ import SwiftUI
 
 final class MyBooksViewModel: ObservableObject {
     @Published var isLoading = false
-    @Published var readingBooks: [Book] = []
-    @Published var unfinishedBooks: [Book] = []
+    @Published var readingBooks: [String: Book] = [:]
+    @Published var readBooks: [String: Book] = [:]
+    @Published var isShowingDeleteAlert = false
+    @Published var bookToDelete: Book?
 
-    let booksProvider: BooksProvidable
-    let imagesProvider: ImagesProvidable
-    let userProvider: UserProvidable
-    let authenticationProvider: AuthenticationProvidable
+    private let booksProvider: BooksProvidable
+    private let userProvider: UserProvidable
+
+    var firstSectionHeader: String {
+        readingBooks.isEmpty ? "No current books" : "Books"
+    }
+
+    var secondSectionHeader: String {
+        readBooks.isEmpty ? "" : "History"
+    }
 
     init(booksProvider: BooksProvidable,
-         userProvider: UserProvidable,
-         imagesProvider: ImagesProvidable,
-         authenticationProvider: AuthenticationProvidable) {
+         userProvider: UserProvidable) {
         self.booksProvider = booksProvider
         self.userProvider = userProvider
-        self.imagesProvider = imagesProvider
-        self.authenticationProvider = authenticationProvider
     }
 
-    func getAllReadingBooks() {
+    func getAllBooks() {
         isLoading = true
 
         Task {
@@ -38,24 +42,36 @@ final class MyBooksViewModel: ObservableObject {
                 return
             }
 
-            self.readingBooks = user.readingBooks ?? []
-            self.isLoading = false
+            DispatchQueue.main.async {
+                self.readingBooks = user.readingBooks ?? [:]
+                self.readBooks = user.readBooks ?? [:]
+                self.isLoading = false
+            }
         }
     }
 
-    func getAllUnfinishedBooks() {
-        isLoading = true
+    func moveBookToHistory(_ book: Book) {
+        userProvider.removeBookFromReading(book)
+        userProvider.addBookInRead(book)
 
-        Task {
-            guard let user = await userProvider.getCurrentUser() else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                }
-                return
-            }
+        var updatedBook = book
+        updatedBook.isTaken = false
+        booksProvider.update(updatedBook, originalID: updatedBook.id)
 
-            self.unfinishedBooks = user.unfinishedBooks ?? []
-            self.isLoading = false
-        }
+        getAllBooks()
+    }
+
+    func returnBookToLibrary(_ book: Book) {
+        userProvider.removeBookFromReading(book)
+
+        var updatedBook = book
+        updatedBook.isTaken = false
+        booksProvider.update(updatedBook, originalID: updatedBook.id)
+
+        getAllBooks()
+    }
+
+    func removeBookFromHistory(_ book: Book) {
+        userProvider.removeBookFromRead(book)
     }
 }
