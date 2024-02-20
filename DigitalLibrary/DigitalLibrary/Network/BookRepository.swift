@@ -17,6 +17,7 @@ protocol BooksProvidable {
 }
 
 final class BooksRepository: BooksProvidable  {
+    private var cachedBooks: [Book]?
     private lazy var reference: DatabaseReference? = {
         let ref = Database.database(url: "https://digitallibrary-e3242-default-rtdb.europe-west1.firebasedatabase.app")
             .reference()
@@ -33,9 +34,17 @@ final class BooksRepository: BooksProvidable  {
     }
 
     func getAll() async -> [Book]? {
-        await withCheckedContinuation { continuation in
-            getAll { books in
-                continuation.resume(returning: books)
+        if let cachedBooks {
+            return cachedBooks
+        } else {
+            listenForBookChanges(completion: { [weak self] books in
+                self?.cachedBooks = books
+            })
+
+            return await withCheckedContinuation { continuation in
+                getAll { books in
+                    continuation.resume(returning: books)
+                }
             }
         }
     }
@@ -52,6 +61,21 @@ final class BooksRepository: BooksProvidable  {
             }
 
             completion(objects)
+        }
+    }
+
+    private func listenForBookChanges(completion: @escaping (([Book]?) -> Void)) {
+        reference?.observe(.value) { [weak self] parentSnapshot in
+            guard let children = parentSnapshot.children.allObjects as? [DataSnapshot] else {
+                self?.cachedBooks = []
+                return
+            }
+
+            let objects = children.compactMap { snapshot in
+                return try? snapshot.data(as: Book.self)
+            }
+
+            self?.cachedBooks = objects
         }
     }
 
