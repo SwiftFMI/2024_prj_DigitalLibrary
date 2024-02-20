@@ -78,6 +78,8 @@ final class BooksRepository: BooksProvidable  {
                                author: book.author,
                                publisher: book.publisher,
                                year: book.year,
+                               genre: book.genre,
+                               isbn: book.isbn,
                                photo: nil,
                                isTaken: book.isTaken)
         reference?.child(originalID).setValue(updatedBook.toDictionary())

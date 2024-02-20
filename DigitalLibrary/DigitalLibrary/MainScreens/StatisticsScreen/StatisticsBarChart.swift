@@ -14,7 +14,7 @@ struct StatisticsBarChart: View {
     var body: some View {
         Chart {
             ForEach(viewModel.books, id: \.self) { book in
-                BarMark(x: .value("xAxisTitle", viewModel.xAxisTitle == "Author" ? book.author : book.genre ?? ""),
+                BarMark(x: .value("xAxisTitle", viewModel.xAxisTitle == "Author" ? book.author : book.genre),
                         y: .value("Books count", 1))
                     .cornerRadius(10)
                     .annotation {
