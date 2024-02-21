@@ -54,7 +54,7 @@ final class LibraryViewModel: ObservableObject {
         Task {
             books = await booksProvider.getAll()?
                 .asyncMap { book in
-                    let photo = try? await imagesProvider.downloadImage("\(book.title).jpg")
+                    let photo = try? await imagesProvider.downloadBookCoverImage("\(book.title).jpg")
 
                     return Book(id: book.id,
                                 title: book.title,

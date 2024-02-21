@@ -14,7 +14,7 @@ struct SwiftUIChangeRootViewApp: App {
     private let authenticationProvider: AuthenticationProvidable = AuthenticationRepository()
     private let userProvider: UserProvidable = UserRepository()
     private let booksProvider: BooksProvidable = BooksRepository()
-    private let imagesProvider = BookCoversRepository()
+    private let imagesProvider = ImagesRepository()
     private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {

@@ -11,6 +11,7 @@ final class ProfileViewModel: ObservableObject {
     @ObservedObject private var appRootManager: AppRootManager
     let authenticationProvider: AuthenticationProvidable
     let usersProvider: UserProvidable
+    let imagesProvider: ImagesProvidable
 
     @Published var user: UserModel?
     @Published var editingField: ProfileField? = nil
@@ -23,14 +24,28 @@ final class ProfileViewModel: ObservableObject {
 
     @Published var isLoading = false
 
-    @Published var imageState: ProfileModel.ImageState = .empty
+    @Published var imageState: ProfileModel.ImageState = .empty {
+        didSet {
+            switch imageState {
+            case .success(_, let data):
+                if let id = authenticationProvider.getCurrentUserID() {
+                    imagesProvider.uploadProfileImage(id: id, data)
+                }
+            default:
+                break
+            }
+        }
+    }
 
     init(appRootManager: AppRootManager,
          authenticationProvider: AuthenticationProvidable,
-         usersProvider: UserProvidable) {
+         usersProvider: UserProvidable,
+         imagesProvider: ImagesProvidable) {
         self.appRootManager = appRootManager
         self.authenticationProvider = authenticationProvider
         self.usersProvider = usersProvider
+        self.imagesProvider = imagesProvider
+        
     }
 
     @MainActor
@@ -38,19 +53,23 @@ final class ProfileViewModel: ObservableObject {
         Task {
             isLoading = true
 
-            do {
-                guard let fetchedUser = await usersProvider.getCurrentUser() else {
-                        self.showingAlert = true
-                        self.alertMessage = "No user data was fetched."
-                        self.isLoading = false
-                    return
-                }
-
-                self.user = fetchedUser
-                self.firstName = fetchedUser.firstName
-                self.lastName = fetchedUser.lastName
-                self.phone = fetchedUser.phone
+            guard let fetchedUser = await usersProvider.getCurrentUser() else {
+                self.showingAlert = true
+                self.alertMessage = "No user data was fetched."
                 self.isLoading = false
+                return
+            }
+
+            self.isLoading = false
+            self.user = fetchedUser
+            self.firstName = fetchedUser.firstName
+            self.lastName = fetchedUser.lastName
+            self.phone = fetchedUser.phone
+
+            if let id = authenticationProvider.getCurrentUserID(),
+               let data = try? await imagesProvider.downloadProfileImage(id: id),
+               let uiImage = UIImage(data: data) {
+                imageState = .success(Image(uiImage: uiImage), data)
             }
         }
     }

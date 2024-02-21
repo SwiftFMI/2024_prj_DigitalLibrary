@@ -15,7 +15,7 @@ struct ProfileImage: View {
 
     var body: some View {
         switch viewModel.imageState {
-        case .success(let image):
+        case .success(let image, _):
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)

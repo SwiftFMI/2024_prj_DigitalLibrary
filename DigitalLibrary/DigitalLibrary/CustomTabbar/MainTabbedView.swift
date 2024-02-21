@@ -30,7 +30,8 @@ struct MainTabbedView: View {
 
                 ProfileView(viewModel: .init(appRootManager: viewModel.appRootManager,
                                              authenticationProvider: viewModel.authenticationProvider,
-                                             usersProvider: viewModel.userProvider))
+                                             usersProvider: viewModel.userProvider, 
+                                             imagesProvider: viewModel.imagesProvider))
                     .tag(3)
             }
 
@@ -92,6 +93,6 @@ struct MainTabbedView_Previews: PreviewProvider {
                                         authenticationProvider: AuthenticationRepositoryMock(),
                                         userProvider: UserRepositoryMock(),
                                         booksProvider: BooksRepositoryMock(),
-                                        imagesProvider: BookCoversRepository()))
+                                        imagesProvider: ImagesRepository()))
     }
 }
