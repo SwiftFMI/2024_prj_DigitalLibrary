@@ -27,7 +27,7 @@ struct ProfileInfoField: View {
                     .disableAutocorrection(true)
                     .padding(10)
                     .background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                    .foregroundColor(viewModel.isEditing ? .gray : .primary)
+                    .foregroundColor(viewModel.isEditing ? .primary : .gray)
 
                 Spacer()
 
