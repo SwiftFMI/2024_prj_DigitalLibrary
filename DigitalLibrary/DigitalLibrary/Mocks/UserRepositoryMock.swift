@@ -31,13 +31,6 @@ final class UserRepositoryMock: UserProvidable {
         }
     }
 
-    func addBookInUnfinished(_ book: Book) {
-        currentUser?.unfinishedBooks?[book.title] = book
-        if let currentUser {
-            updateUser(currentUser)
-        }
-    }
-
     func addBookInRead(_ book: Book) {
         currentUser?.readBooks?[book.title] = book
         if let currentUser {
@@ -47,13 +40,6 @@ final class UserRepositoryMock: UserProvidable {
 
     func removeBookFromReading(_ book: Book) {
         currentUser?.readingBooks?.removeValue(forKey: book.title)
-        if let currentUser {
-            updateUser(currentUser)
-        }
-    }
-
-    func removeBookFromUnfinished(_ book: Book) {
-        currentUser?.unfinishedBooks?.removeValue(forKey: book.title)
         if let currentUser {
             updateUser(currentUser)
         }

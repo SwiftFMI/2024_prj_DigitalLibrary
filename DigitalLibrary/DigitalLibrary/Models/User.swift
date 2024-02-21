@@ -14,6 +14,5 @@ struct UserModel: Codable {
     var email: String
     var phone: String
     var readingBooks: [String : Book]? = [:]
-    var unfinishedBooks: [String : Book]? = [:]
     var readBooks: [String : Book]? = [:]
 }
