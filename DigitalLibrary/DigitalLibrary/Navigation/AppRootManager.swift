@@ -8,9 +8,13 @@
 import Foundation
 
 final class AppRootManager: ObservableObject {
-    @Published var currentRoot: rootScreens = .login
+    @Published var currentRoot: RootScreens = {
+        let isUserRemembered = UserDefaults.standard.value(forKey: "remember-me") as? Bool ?? false
 
-    enum rootScreens {
+        return isUserRemembered ? .main : .login
+    }()
+
+    enum RootScreens {
         case login
         case main
     }

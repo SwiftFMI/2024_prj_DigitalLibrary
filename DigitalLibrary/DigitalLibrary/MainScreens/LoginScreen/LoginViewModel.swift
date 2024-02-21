@@ -17,8 +17,6 @@ enum Field {
 }
 
 final class LoginViewModel: ObservableObject {
-
-
     @ObservedObject private(set) var appRootManager: AppRootManager
 
     private(set) var authenticationProvider: AuthenticationProvidable
@@ -53,6 +51,8 @@ final class LoginViewModel: ObservableObject {
 
     @Published var isLoading = false
 
+    @Published var isRememberMeChecked = false
+
     var formIsValid: Bool {
         emailIsValid && passwordIsValid && startedEditingEmail && startedEditingPassword
     }
@@ -80,6 +80,7 @@ final class LoginViewModel: ObservableObject {
                 try await authenticationProvider.signIn(emailAddress: email, password: password)
 
                 appRootManager.currentRoot = .main
+                rememberUser()
             } catch  {
                 showingAlert = true
 
@@ -92,6 +93,14 @@ final class LoginViewModel: ObservableObject {
             }
 
             self.isLoading = false
+        }
+    }
+
+    private func rememberUser() {
+        if isRememberMeChecked {
+            UserDefaults.standard.set(true, forKey: "remember-me")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "remember-me")
         }
     }
 }
