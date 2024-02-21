@@ -23,6 +23,8 @@ final class ProfileViewModel: ObservableObject {
 
     @Published var isLoading = false
 
+    @Published var imageState: ProfileModel.ImageState = .empty
+
     init(appRootManager: AppRootManager,
          authenticationProvider: AuthenticationProvidable,
          usersProvider: UserProvidable) {

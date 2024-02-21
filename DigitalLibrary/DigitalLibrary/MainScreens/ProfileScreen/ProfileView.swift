@@ -14,6 +14,7 @@ struct ProfileView: View {
     var body: some View {
         ScrollView {
             VStack {
+                EditableProfileImage(viewModel: .init(imageState: $viewModel.imageState))
 
                 if viewModel.isLoading {
                     ProgressView()
