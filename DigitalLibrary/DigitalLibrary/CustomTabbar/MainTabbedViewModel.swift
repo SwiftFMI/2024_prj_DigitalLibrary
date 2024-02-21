@@ -9,17 +9,20 @@ import SwiftUI
 
 final class MainTabbedViewModel: ObservableObject {
     @Published var selectedTab = 0
+    @ObservedObject var appRootManager: AppRootManager
 
     let authenticationProvider: AuthenticationProvidable
     let userProvider: UserProvidable
     let booksProvider: BooksProvidable
     let imagesProvider: ImagesProvidable
 
-    init(authenticationProvider: AuthenticationProvidable,
+    init(appRootManager: AppRootManager,
+         authenticationProvider: AuthenticationProvidable,
          userProvider: UserProvidable,
          booksProvider: BooksProvidable,
          imagesProvider: ImagesProvidable,
          selectedTab: Int = 0) {
+        self.appRootManager = appRootManager
         self.authenticationProvider = authenticationProvider
         self.userProvider = userProvider
         self.booksProvider = booksProvider

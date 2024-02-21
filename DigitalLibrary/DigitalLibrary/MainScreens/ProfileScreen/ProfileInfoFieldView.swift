@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ProfileField {
-    case email, firstName, lastName, phone
+    case firstName, lastName, phone
 }
 
 struct ProfileInfoField: View {
@@ -43,7 +43,7 @@ struct ProfileInfoField: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 24, height: 24)
-                        .foregroundColor(viewModel.isEditing ? .blue : .black)
+                        .foregroundColor(viewModel.isEditing ? .blue : .purple.opacity(0.6))
                         .padding(6)
                 }
                 .background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))

@@ -19,18 +19,15 @@ struct ProfileView: View {
                     .frame(width: 100, height: 100)
                     .clipped()
                     .cornerRadius(50)
+                    .foregroundColor(.purple.opacity(0.6))
 
                 Text("Profile")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .foregroundColor(.purple.opacity(0.6))
             }
             .frame(maxWidth: .infinity)
 
-            ProfileInfoField(viewModel: .init(label: "Email",
-                                              text: $viewModel.email,
-                                              fieldType: .email,
-                                              editingField: $viewModel.editingField,
-                                              onCommit: { viewModel.updateUserData(field: .email) }))
             ProfileInfoField(viewModel: .init(label: "First name",
                                               text: $viewModel.firstName,
                                               fieldType: .firstName,
@@ -46,6 +43,20 @@ struct ProfileView: View {
                                               fieldType: .phone,
                                               editingField: $viewModel.editingField,
                                               onCommit: { viewModel.updateUserData(field: .phone) }))
+            Button("Sign Out") {
+                viewModel.signOut()
+            }
+            .alert(viewModel.alertMessage, isPresented: $viewModel.showingAlert) {
+                Button("OK", role: .cancel) { }
+            }
+            .padding()
+            .frame(width: 310, height: 50)
+            .background(.purple.opacity(0.9))
+            .foregroundColor(.white)
+            .cornerRadius(30)
+            .padding()
+
+            Spacer()
         }
         .padding()
         .onAppear {
@@ -56,7 +67,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: ProfileViewModel(//appRootManager: AppRootManager(),
+        ProfileView(viewModel: ProfileViewModel(appRootManager: AppRootManager(),
             authenticationProvider: AuthenticationRepositoryMock(),
             usersProvider: UserRepositoryMock()))
     }

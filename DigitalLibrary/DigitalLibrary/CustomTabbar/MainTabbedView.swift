@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainTabbedView: View {
-    @EnvironmentObject private var appRootManager: AppRootManager
     @ObservedObject var viewModel: MainTabbedViewModel
 
     var body: some View {
@@ -27,7 +26,7 @@ struct MainTabbedView: View {
                 StatisticsView(viewModel: StatisticsViewModel())
                     .tag(2)
 
-                ProfileView(viewModel: .init(//appRootManager: appRootManager,
+                ProfileView(viewModel: .init(appRootManager: viewModel.appRootManager,
                                              authenticationProvider: viewModel.authenticationProvider,
                                              usersProvider: viewModel.userProvider))
                     .tag(3)
@@ -81,7 +80,8 @@ extension MainTabbedView{
 
 struct MainTabbedView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabbedView(viewModel: .init(authenticationProvider: AuthenticationRepositoryMock(),
+        MainTabbedView(viewModel: .init(appRootManager: AppRootManager(),
+                                        authenticationProvider: AuthenticationRepositoryMock(),
                                         userProvider: UserRepositoryMock(),
                                         booksProvider: BooksRepositoryMock(),
                                         imagesProvider: BookCoversRepository()))

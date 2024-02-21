@@ -26,7 +26,8 @@ struct SwiftUIChangeRootViewApp: App {
                              authenticationProvider: authenticationProvider,
                              userProvider: userProvider)
                 case .main:
-                    MainTabbedView(viewModel: .init(authenticationProvider: authenticationProvider,
+                    MainTabbedView(viewModel: .init(appRootManager: appRootManager,
+                                                    authenticationProvider: authenticationProvider,
                                                     userProvider: userProvider,
                                                     booksProvider: booksProvider,
                                                     imagesProvider: imagesProvider))

@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
-    //@ObservedObject private var appRootManager: AppRootManager
+    @ObservedObject private var appRootManager: AppRootManager
     let authenticationProvider: AuthenticationProvidable
     let usersProvider: UserProvidable
 
@@ -17,15 +17,16 @@ final class ProfileViewModel: ObservableObject {
     @Published var showingAlert = false
     @Published var alertMessage = ""
 
-    @Published var email: String = ""
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var phone: String = ""
 
-    init(//appRootManager: AppRootManager,
+    @Published var isLoading = false
+
+    init(appRootManager: AppRootManager,
          authenticationProvider: AuthenticationProvidable,
          usersProvider: UserProvidable) {
-        //self.appRootManager = appRootManager
+        self.appRootManager = appRootManager
         self.authenticationProvider = authenticationProvider
         self.usersProvider = usersProvider
     }
@@ -34,15 +35,12 @@ final class ProfileViewModel: ObservableObject {
         Task {
             do {
                 guard let fetchedUser = await usersProvider.getCurrentUser() else {
-                    DispatchQueue.main.async {
                         self.showingAlert = true
                         self.alertMessage = "No user data was fetched."
-                    }
                     return
                 }
 
                 self.user = fetchedUser
-                self.email = fetchedUser.email
                 self.firstName = fetchedUser.firstName
                 self.lastName = fetchedUser.lastName
                 self.phone = fetchedUser.phone
@@ -58,8 +56,6 @@ final class ProfileViewModel: ObservableObject {
         }
 
         switch field {
-        case .email:
-            updatedUser.email = self.email
         case .firstName:
             updatedUser.firstName = self.firstName
         case .lastName:
@@ -70,4 +66,20 @@ final class ProfileViewModel: ObservableObject {
 
         usersProvider.updateUser(updatedUser)
     }
+
+    func signOut() {
+        isLoading = true
+
+            Task {
+                do {
+                    try authenticationProvider.signOut()
+                    appRootManager.currentRoot = .login
+                } catch {
+                    DispatchQueue.main.async {
+                        self.showingAlert = true
+                        self.alertMessage = "Failed to sign out: \(error.localizedDescription)"
+                    }
+                }
+            }
+        }
 }
