@@ -15,7 +15,8 @@ final class MyBooksViewModel: ObservableObject {
     @Published var bookToDelete: Book?
 
     private let booksProvider: BooksProvidable
-    private let userProvider: UserProvidable
+    private var userProvider: UserProvidable
+    private let imagesProvider: ImagesProvidable
 
     var firstSectionHeader: String {
         readingBooks.isEmpty ? "No current books" : "Books"
@@ -26,19 +27,22 @@ final class MyBooksViewModel: ObservableObject {
     }
 
     init(booksProvider: BooksProvidable,
-         userProvider: UserProvidable) {
+         userProvider: UserProvidable,
+         imagesProvider: ImagesProvidable) {
         self.booksProvider = booksProvider
         self.userProvider = userProvider
+        self.imagesProvider = imagesProvider
     }
 
     func getAllBooks() {
         isLoading = true
 
-        Task {
+        Task { 
             guard let user = await userProvider.getCurrentUser() else {
                 DispatchQueue.main.async {
                     self.isLoading = false
                 }
+
                 return
             }
 

@@ -34,10 +34,13 @@ final class ProfileViewModel: ObservableObject {
     @MainActor
     func fetchCurrentUser() {
         Task {
+            isLoading = true
+
             do {
                 guard let fetchedUser = await usersProvider.getCurrentUser() else {
                         self.showingAlert = true
                         self.alertMessage = "No user data was fetched."
+                        self.isLoading = false
                     return
                 }
 
@@ -45,6 +48,7 @@ final class ProfileViewModel: ObservableObject {
                 self.firstName = fetchedUser.firstName
                 self.lastName = fetchedUser.lastName
                 self.phone = fetchedUser.phone
+                self.isLoading = false
             }
         }
     }
@@ -76,14 +80,14 @@ final class ProfileViewModel: ObservableObject {
                     try authenticationProvider.signOut()
                     appRootManager.currentRoot = .login
                     UserDefaults.standard.removeObject(forKey: "remember-me")
+                    isLoading = false
                 } catch {
                     DispatchQueue.main.async {
                         self.showingAlert = true
                         self.alertMessage = "Failed to sign out: \(error.localizedDescription)"
+                        self.isLoading = false
                     }
                 }
-
-                isLoading = false
             }
         }
 }
