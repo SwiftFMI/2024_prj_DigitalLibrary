@@ -31,6 +31,7 @@ final class ProfileViewModel: ObservableObject {
         self.usersProvider = usersProvider
     }
 
+    @MainActor
     func fetchCurrentUser() {
         Task {
             do {
