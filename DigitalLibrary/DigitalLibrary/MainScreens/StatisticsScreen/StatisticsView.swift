@@ -18,19 +18,19 @@ struct StatisticsView: View {
 
             switch statisticsButtonsViewModel.chartType {
             case .forTime:
-                StatisticsPointChart(viewModel: StatisticsPointChartViewModel(books: viewModel.books))
+                StatisticsPointChart(viewModel: StatisticsPointChartViewModel(books: viewModel.readingBooks.map({ pair in
+                    return pair.value
+                })))
             case .forGenre:
-                StatisticsBarChart(viewModel: StatisticsBarChartViewModel(books: viewModel.books, xAxisTitle: "Genre"))
+                StatisticsBarChart(viewModel: StatisticsBarChartViewModel(books: viewModel.allBooks.map({ pair in
+                    return pair.value
+                }), xAxisTitle: "Genre"))
             case .forAuthor:
-                StatisticsBarChart(viewModel: StatisticsBarChartViewModel(books: viewModel.books, xAxisTitle: "Author"))
+                StatisticsBarChart(viewModel: StatisticsBarChartViewModel(books: viewModel.allBooks.map({ pair in
+                    return pair.value
+                }), xAxisTitle: "Author"))
             }
         }
         .padding()
-    }
-}
-
-struct StatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatisticsView(viewModel: StatisticsViewModel())
     }
 }

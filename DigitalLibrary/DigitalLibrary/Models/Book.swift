@@ -16,7 +16,7 @@ struct Book: Codable, Hashable {
     let year: Int
     let genre: String
     let isbn: String
-    let returningDeadline: Date?
+    var returningDeadline: Date?
     let photo: Data?
 
     var isTaken: Bool = false

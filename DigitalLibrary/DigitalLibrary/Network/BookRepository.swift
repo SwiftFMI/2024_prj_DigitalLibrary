@@ -104,6 +104,7 @@ final class BooksRepository: BooksProvidable  {
                                year: book.year,
                                genre: book.genre,
                                isbn: book.isbn,
+                               returningDeadline: book.returningDeadline,
                                photo: nil,
                                isTaken: book.isTaken)
         reference?.child(originalID).setValue(updatedBook.toDictionary())

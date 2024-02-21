@@ -56,6 +56,7 @@ final class MyBooksViewModel: ObservableObject {
 
         var updatedBook = book
         updatedBook.isTaken = false
+        updatedBook.returningDeadline = nil
         booksProvider.update(updatedBook, originalID: updatedBook.id)
 
         getAllBooks()

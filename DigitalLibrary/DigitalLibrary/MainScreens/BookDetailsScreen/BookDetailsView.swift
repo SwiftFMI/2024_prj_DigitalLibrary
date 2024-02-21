@@ -59,6 +59,14 @@ struct BookDetailsView: View {
                     .padding()
             }
             .disabled(viewModel.isTaken)
+
+            if let returningDeadline = viewModel.returningDeadline {
+                Text("Returning date: \(returningDeadline.formatForBookView())")
+                    .font(.headline)
+                    .foregroundColor(.red.opacity(0.7))
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 15)
+            }
         }
         .alert(viewModel.alertMessage, isPresented: $viewModel.showingAlert) {
             Button("OK", role: .cancel) { }
