@@ -9,10 +9,12 @@ import SwiftUI
 import VisionKit
 
 struct CameraView: View {
+    @State var showAlert: Bool = false
     @State var isShowingScanner = true
     @State var showRectangle: Bool = true
     @Binding var isScanning: Bool
     @Binding var scannedText: String
+    var books: [Book]
 
     var body: some View {
         if DataScannerViewController.isSupported && DataScannerViewController.isAvailable {
@@ -54,9 +56,20 @@ struct CameraView: View {
                             .background(.black)
                             .foregroundColor(.white)
                             .onTapGesture {
-                                isScanning = false
+                                let filteredBooks = books.filter { $0.isbn.localizedCaseInsensitiveContains(scannedText) }
+                                if filteredBooks.count == 0 {
+                                    showAlert = true
+                                }
+                                else {
+                                    isScanning = false
+                                }
                             }
                     }
+                }
+            }
+            .alert("There isn't a book with this ISBN.", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {
+                    isScanning = false
                 }
             }
         } else if !DataScannerViewController.isSupported {
@@ -68,4 +81,3 @@ struct CameraView: View {
         }
     }
 }
-

@@ -16,7 +16,7 @@ final class LibraryViewModel: ObservableObject {
     @Published var isScanning: Bool = false
     @Published var scannedText: String = ""
 
-    private var books: [Book] = []
+    var books: [Book] = []
     let booksProvider: BooksProvidable
     let imagesProvider: ImagesProvidable
     let userProvider: UserProvidable
