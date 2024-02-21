@@ -9,6 +9,7 @@ import SwiftUI
 import VisionKit
 
 struct CameraView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var showAlert: Bool = false
     @State var isShowingScanner = true
     @State var showRectangle: Bool = true
@@ -53,8 +54,8 @@ struct CameraView: View {
                             .padding(.bottom, 40)
 
                         Text(scannedText)
-                            .background(.black)
-                            .foregroundColor(.white)
+                            .background(colorScheme == .dark ? .white : .black)
+                            .foregroundColor(.primary)
                             .onTapGesture {
                                 let filteredBooks = books.filter { $0.isbn.localizedCaseInsensitiveContains(scannedText) }
                                 if filteredBooks.count == 0 {

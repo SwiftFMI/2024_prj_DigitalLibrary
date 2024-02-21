@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StatisticsBarChart: View {
     @ObservedObject var viewModel: StatisticsBarChartViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         Chart {
@@ -31,18 +32,18 @@ struct StatisticsBarChart: View {
         .chartYAxis(.hidden)
         .chartYAxisLabel(position: .trailing, alignment: .center) {
             Text("Books count")
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .font(.body)
                 .bold()
         }
         .chartYAxisLabel(position: .top, alignment: .center) {
             Text(viewModel.xAxisTitle)
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .font(.body)
                 .bold()
         }
         .shadow(color: .gray, radius: 10, x: 10)
         .padding()
-        .foregroundColor(Color(red: 141 / 255, green: 87 / 255, blue: 138 / 255))
+        .foregroundColor(.purple)
     }
 }

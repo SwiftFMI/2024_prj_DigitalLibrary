@@ -44,6 +44,7 @@ struct StatisticsButtons: View {
 
 struct StatisticsSingleButton: View {
     @ObservedObject var viewModel: StatisticsSingleButtonViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         Button(action: {
@@ -52,7 +53,7 @@ struct StatisticsSingleButton: View {
         }) {
             Text(viewModel.title)
                 .padding(15)
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .background(.clear)
                 .font(viewModel.isActive ? .title3 : .callout)
                 .underline(viewModel.isActive)

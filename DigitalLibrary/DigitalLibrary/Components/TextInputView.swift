@@ -47,9 +47,13 @@ struct TextInputView: View {
                     if !isSecure {
                         TextField(placeholder, text: $text)
                             .disableAutocorrection(true)
+                            .foregroundColor(Color.primary)
+                            .accentColor(Color.primary)
 
                     } else {
                         SecureField(placeholder, text: $text)
+                            .foregroundColor(Color.primary)
+                            .accentColor(Color.primary)
                     }
                 }
                 .foregroundColor(text == "" ? .gray : .black)

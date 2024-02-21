@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ScrollView {
@@ -20,12 +21,12 @@ struct ProfileView: View {
                         .frame(width: 100, height: 100)
                         .clipped()
                         .cornerRadius(50)
-                        .foregroundColor(.purple.opacity(0.6))
+                        .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
 
                     Text("Profile")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.purple.opacity(0.6))
+                        .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                 }
                 .frame(maxWidth: .infinity)
 
@@ -64,7 +65,7 @@ struct ProfileView: View {
                 }
                 .padding()
                 .frame(width: 310, height: 50)
-                .background(.purple.opacity(0.9))
+                .background(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                 .foregroundColor(.white)
                 .cornerRadius(30)
                 .padding()

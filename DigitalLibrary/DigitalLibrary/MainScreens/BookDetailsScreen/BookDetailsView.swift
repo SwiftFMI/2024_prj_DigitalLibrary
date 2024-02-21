@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookDetailsView: View {
     @ObservedObject var viewModel: BookDetailsViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ScrollView {
@@ -50,12 +51,16 @@ struct BookDetailsView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
-            
+
             Button(action: {
                 viewModel.addToMyBooks()
             }) {
                 Label(viewModel.buttonTitle, systemImage: viewModel.buttonImage)
-                    .foregroundColor(viewModel.isTaken ? .purple.opacity(0.4) : .purple)
+                    .foregroundColor(
+                        viewModel.isTaken ?
+                                .purple.opacity(colorScheme == .dark ? 1 : 0.4) :
+                                .purple
+                    )
                     .padding()
             }
             .disabled(viewModel.isTaken)

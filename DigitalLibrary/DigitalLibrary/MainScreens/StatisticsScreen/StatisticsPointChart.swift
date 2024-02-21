@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StatisticsPointChart: View {
     @ObservedObject var viewModel: StatisticsPointChartViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         Chart {
@@ -21,13 +22,14 @@ struct StatisticsPointChart: View {
                     .annotation(position: .trailing, alignment: .leading) {
                         Text((book.returningDeadline ?? Date()).formatForStatistics())
                             .font(.footnote)
-                            .foregroundColor((book.returningDeadline ?? Date()).formatForStatistics() == (Date().formatForStatistics()) ? .red : .black)
+                            .foregroundColor(book.returningDeadline?.formatForStatistics() == Date().formatForStatistics() ? .red : (colorScheme == .dark ? .white : .black))
+
                     }
             }
         }
         .chartYAxisLabel(position: .top, alignment: .center) {
             Text("Returning date")
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .font(.body)
                 .bold()
         }
