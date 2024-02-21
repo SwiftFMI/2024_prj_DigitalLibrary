@@ -24,15 +24,9 @@ struct MyBooksView: View {
                                 BookListCell(book: book)
                                     .swipeActions {
                                         Button(role: .destructive) {
-                                            viewModel.returnBookToLibrary(book)
-                                        } label: {
-                                            Label("Return", systemImage: "arrowshape.turn.up.left")
-                                        }
-
-                                        Button(role: .destructive) {
                                             viewModel.moveBookToHistory(book)
                                         } label: {
-                                            Label("Finish", systemImage: "checkmark")
+                                            Label("Return", systemImage: "arrowshape.turn.up.left")
                                         }
                                     }
                                     .tint(.purple.opacity(0.6))

@@ -61,16 +61,6 @@ final class MyBooksViewModel: ObservableObject {
         getAllBooks()
     }
 
-    func returnBookToLibrary(_ book: Book) {
-        userProvider.removeBookFromReading(book)
-
-        var updatedBook = book
-        updatedBook.isTaken = false
-        booksProvider.update(updatedBook, originalID: updatedBook.id)
-
-        getAllBooks()
-    }
-
     func removeBookFromHistory(_ book: Book) {
         userProvider.removeBookFromRead(book)
     }
