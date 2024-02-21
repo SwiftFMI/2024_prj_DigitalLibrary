@@ -45,6 +45,13 @@ struct LoginView: View {
                                 .submitLabel(.done)
                                 .autocapitalization(.none)
 
+                            HStack {
+                                RememberMeView(isChecked: $viewModel.isRememberMeChecked)
+                                Spacer()
+                            }
+                            .padding(.bottom, 20)
+                            .padding(.leading, 40)
+
                             Button("Sign In") {
                                 viewModel.signIn()
                             }

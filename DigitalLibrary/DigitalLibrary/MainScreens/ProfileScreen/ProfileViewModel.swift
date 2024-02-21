@@ -75,12 +75,15 @@ final class ProfileViewModel: ObservableObject {
                 do {
                     try authenticationProvider.signOut()
                     appRootManager.currentRoot = .login
+                    UserDefaults.standard.removeObject(forKey: "remember-me")
                 } catch {
                     DispatchQueue.main.async {
                         self.showingAlert = true
                         self.alertMessage = "Failed to sign out: \(error.localizedDescription)"
                     }
                 }
+
+                isLoading = false
             }
         }
 }

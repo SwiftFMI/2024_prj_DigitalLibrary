@@ -76,3 +76,27 @@ struct TextInputView: View {
         .padding([.leading, .trailing], 40)
     }
 }
+
+struct TextInputView_Previews: PreviewProvider {
+    @State private static var firstNameIsValid = true
+    @State private static var firstName = ""
+
+    @State private static var passwordIsValid = true
+    @State private static var password = ""
+
+    static var previews: some View {
+        VStack {
+            TextInputView(title: "First name",
+                          placeholder: "Enter first name",
+                          isValid: $firstNameIsValid,
+                          text: $firstName,
+                          fieldValidator: { "" })
+            TextInputView(title: "Password",
+                          placeholder: "Enter password",
+                          isSecure: true,
+                          isValid: $passwordIsValid,
+                          text: $password,
+                          fieldValidator: { "" })
+        }
+    }
+}
