@@ -46,6 +46,10 @@ final class BookDetailsViewModel: ObservableObject {
         book.isTaken
     }
 
+    var returningDeadline: Date? {
+        book.returningDeadline
+    }
+
     init(book: Book,
          booksProvider: BooksProvidable,
          userProvider: UserProvidable,
@@ -59,6 +63,7 @@ final class BookDetailsViewModel: ObservableObject {
 
     func addToMyBooks() {
         book.isTaken = true
+        book.returningDeadline = Calendar.current.date(byAdding: .day, value: 30, to: Date())
         booksProvider.update(book, originalID: book.id)
         userProvider.addBookInReading(book)
         updateButtonState()

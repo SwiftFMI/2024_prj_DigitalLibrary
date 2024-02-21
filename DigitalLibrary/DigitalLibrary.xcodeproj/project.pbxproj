@@ -30,7 +30,7 @@
 		D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */; };
 		D007C3EE2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */; };
 		D007C3F02B835C8800AF4489 /* StatisticsBarChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007C3EF2B835C8800AF4489 /* StatisticsBarChartViewModel.swift */; };
-		D01889912B827261004DF83E /* StatisticsDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889902B827261004DF83E /* StatisticsDateFormatter.swift */; };
+		D01889912B827261004DF83E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889902B827261004DF83E /* DateFormatter.swift */; };
 		D01889932B82727E004DF83E /* StatisticsPointChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889922B82727E004DF83E /* StatisticsPointChart.swift */; };
 		D01889952B8272A8004DF83E /* StatisticsBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889942B8272A8004DF83E /* StatisticsBarChart.swift */; };
 		D01889972B8272C1004DF83E /* StatisticsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01889962B8272C1004DF83E /* StatisticsButtons.swift */; };
@@ -39,6 +39,7 @@
 		D0E970782B841A5900FDCBDE /* KeyboardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E970772B841A5900FDCBDE /* KeyboardConfiguration.swift */; };
 		D0EED6562B62AEE900410E79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6552B62AEE900410E79 /* User.swift */; };
 		D0EED6582B62AEF500410E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EED6572B62AEF500410E79 /* Book.swift */; };
+		D0F469F62B865A3700525142 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F469F52B865A3700525142 /* StringFormatter.swift */; };
 		DA0994772B7279D3008FE0B3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0994762B7279D3008FE0B3 /* SignUpView.swift */; };
 		DA17C6C52B72817200FBAEF5 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17C6C42B72817200FBAEF5 /* AppRootManager.swift */; };
 		DA17C6C72B7281B600FBAEF5 /* SwiftUIChangeRootViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17C6C62B7281B600FBAEF5 /* SwiftUIChangeRootViewApp.swift */; };
@@ -97,7 +98,7 @@
 		D007C3EB2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtonsViewModel.swift; sourceTree = "<group>"; };
 		D007C3ED2B835C7A00AF4489 /* StatisticsPointChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChartViewModel.swift; sourceTree = "<group>"; };
 		D007C3EF2B835C8800AF4489 /* StatisticsBarChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsBarChartViewModel.swift; sourceTree = "<group>"; };
-		D01889902B827261004DF83E /* StatisticsDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDateFormatter.swift; sourceTree = "<group>"; };
+		D01889902B827261004DF83E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		D01889922B82727E004DF83E /* StatisticsPointChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPointChart.swift; sourceTree = "<group>"; };
 		D01889942B8272A8004DF83E /* StatisticsBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsBarChart.swift; sourceTree = "<group>"; };
 		D01889962B8272C1004DF83E /* StatisticsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsButtons.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		D0E970772B841A5900FDCBDE /* KeyboardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConfiguration.swift; sourceTree = "<group>"; };
 		D0EED6552B62AEE900410E79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0EED6572B62AEF500410E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D0F469F52B865A3700525142 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		DA0994762B7279D3008FE0B3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DA17C6C42B72817200FBAEF5 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
 		DA17C6C62B7281B600FBAEF5 /* SwiftUIChangeRootViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChangeRootViewApp.swift; sourceTree = "<group>"; };
@@ -228,8 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				93EED1902B80CAE3003F77B7 /* SearchBar.swift */,
-				D01889902B827261004DF83E /* StatisticsDateFormatter.swift */,
+				D01889902B827261004DF83E /* DateFormatter.swift */,
 				D0E970772B841A5900FDCBDE /* KeyboardConfiguration.swift */,
+				D0F469F52B865A3700525142 /* StringFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				D01889932B82727E004DF83E /* StatisticsPointChart.swift in Sources */,
 				9394C1ED2B65088D005D6D83 /* LibraryView.swift in Sources */,
 				93EED1912B80CAE3003F77B7 /* SearchBar.swift in Sources */,
+				D0F469F62B865A3700525142 /* StringFormatter.swift in Sources */,
 				DA25BFC92B78ADE900B6F03C /* AuthenticationRepositoryMock.swift in Sources */,
 				D007C3EC2B835C6B00AF4489 /* StatisticsButtonsViewModel.swift in Sources */,
 				93B81EA92B8487C6005AE5AD /* MyBooksViewModel.swift in Sources */,
@@ -523,7 +527,7 @@
 				DAF765A22B66E73100BA04EF /* AuthenticationRepository.swift in Sources */,
 				DA17C6CD2B72D02700FBAEF5 /* EmailValidator.swift in Sources */,
 				DA25BFD72B7ACF3D00B6F03C /* BooksMockData.swift in Sources */,
-				D01889912B827261004DF83E /* StatisticsDateFormatter.swift in Sources */,
+				D01889912B827261004DF83E /* DateFormatter.swift in Sources */,
 				93B81EAB2B848BDC005AE5AD /* EmptyLibraryView.swift in Sources */,
 				DA17C6D72B72D27B00FBAEF5 /* ConfirmPasswordValidator.swift in Sources */,
 				DAF765AF2B66F6E700BA04EF /* FirebaseConfiguration.swift in Sources */,

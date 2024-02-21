@@ -23,7 +23,7 @@ struct MainTabbedView: View {
                                              userProvider: viewModel.userProvider))
                     .tag(1)
 
-                StatisticsView(viewModel: StatisticsViewModel())
+                StatisticsView(viewModel: StatisticsViewModel(userProvider: viewModel.userProvider))
                     .tag(2)
 
                 ProfileView(viewModel: .init(appRootManager: viewModel.appRootManager,

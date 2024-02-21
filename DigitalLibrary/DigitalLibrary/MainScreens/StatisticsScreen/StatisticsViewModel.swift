@@ -14,5 +14,29 @@ enum ChartType {
 }
 
 final class StatisticsViewModel: ObservableObject {
-    @Published var books: [Book] = Array(BooksMockData.books.prefix(10)) // change later
+    @Published var readingBooks: [String: Book] = [:]
+    @Published var readBooks: [String: Book] = [:]
+    @Published var allBooks: [String: Book] = [:]
+
+    private let userProvider: UserProvidable
+
+    init(userProvider: UserProvidable) {
+        self.userProvider = userProvider
+        getAllBooks()
+    }
+
+    func getAllBooks() {
+        Task {
+            guard let user = await userProvider.getCurrentUser() else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.readingBooks = user.readingBooks ?? [:]
+                self.readBooks = user.readBooks ?? [:]
+                self.allBooks = self.readingBooks
+                self.allBooks.merge(self.readBooks) { (_, new) in new }
+            }
+        }
+    }
 }
