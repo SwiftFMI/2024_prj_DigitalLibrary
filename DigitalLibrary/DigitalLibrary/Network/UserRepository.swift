@@ -22,16 +22,9 @@ final class UserRepository: UserProvidable {
     private var userID: String?
 
     private lazy var reference: DatabaseReference? = {
-        let path: String
-        if let userID {
-            path = "users/\(userID)"
-        } else {
-            path = "users"
-        }
-
         let ref = Database.database(url: "https://digitallibrary-e3242-default-rtdb.europe-west1.firebasedatabase.app")
             .reference()
-            .child(path)
+            .child("users")
         return ref
     }()
 
@@ -41,6 +34,7 @@ final class UserRepository: UserProvidable {
     
     func setUserID(_ id: String) {
         self.userID = id
+        reference = reference?.child("id")
     }
 
     func createUser(_ user: UserModel) {

@@ -67,7 +67,7 @@ struct LoginView: View {
 
                             HStack {
                                 Text("Don't have an account?")
-                                    .foregroundColor(.black.opacity(0.8))
+                                    .foregroundColor(.primary)
                                 NavigationLink("Sign Up",
                                                destination: SignUpView(viewModel: SignUpViewModel(
                                                    appRootManager: viewModel.appRootManager,

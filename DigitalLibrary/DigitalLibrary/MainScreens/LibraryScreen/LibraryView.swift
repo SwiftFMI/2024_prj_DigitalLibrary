@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LibraryView: View {
     @ObservedObject var viewModel: LibraryViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         NavigationView {
@@ -58,10 +59,10 @@ struct LibraryView: View {
                 ToolbarItem(placement: .principal) {
                     HStack {
                         Image(systemName: "books.vertical.fill")
-                            .foregroundColor(.purple.opacity(0.4))
+                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.4))
                         Text("All Books")
                             .font(.headline)
-                            .foregroundColor(.purple.opacity(0.6))
+                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                     }
                 }
 
@@ -71,7 +72,7 @@ struct LibraryView: View {
                         viewModel.isScanning = true
                     }) {
                         Image(systemName: "qrcode.viewfinder")
-                            .foregroundColor(.purple.opacity(0.6))
+                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                     }
                 }
             }

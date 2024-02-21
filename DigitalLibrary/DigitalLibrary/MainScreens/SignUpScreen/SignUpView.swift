@@ -108,6 +108,7 @@ struct SignUpView: View {
                 }
             }
         }
+        .foregroundColor(Color.primary)
         .onTapGesture {
             hideKeyboard()
         }

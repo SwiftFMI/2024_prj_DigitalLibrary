@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabbedView: View {
     @ObservedObject var viewModel: MainTabbedViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ZStack(alignment: .bottom){
@@ -47,7 +48,9 @@ struct MainTabbedView: View {
                 .padding(6)
             }
             .frame(height: 60)
-            .background(.purple.opacity(0.2))
+            .background(
+                .purple.opacity(colorScheme == .dark ? 0.6 : 0.4)
+            )
             .cornerRadius(35)
             .padding(.horizontal, 26)
             .offset(y: 15)
@@ -62,18 +65,22 @@ extension MainTabbedView{
             Image(imageName)
                 .resizable()
                 .renderingMode(.template)
-                .foregroundColor(isActive ? .black : .gray)
+                .foregroundColor(isActive ? .primary : .gray)
                 .frame(width: 20, height: 20)
             if isActive {
                 Text(title)
                     .font(.system(size: 14))
-                    .foregroundColor(isActive ? .black : .gray)
+                    .foregroundColor(isActive ? .primary : .gray)
                     .fixedSize()
             }
             Spacer()
         }
         .frame(height: 50)
-        .background(isActive ? .purple.opacity(0.4) : .clear)
+        .background(
+            isActive ?
+                    .purple.opacity(colorScheme == .dark ? 1 : 0.4) :
+                    .clear
+        )
         .cornerRadius(30)
     }
 }

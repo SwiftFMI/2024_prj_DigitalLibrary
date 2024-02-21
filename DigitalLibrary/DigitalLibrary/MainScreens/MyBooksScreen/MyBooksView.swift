@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyBooksView: View {
     @ObservedObject var viewModel: MyBooksViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         NavigationView {
@@ -29,7 +30,7 @@ struct MyBooksView: View {
                                             Label("Return", systemImage: "arrowshape.turn.up.left")
                                         }
                                     }
-                                    .tint(.purple.opacity(0.6))
+                                    .tint(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                             }
                         }
 
@@ -56,10 +57,10 @@ struct MyBooksView: View {
                 ToolbarItem(placement: .principal) {
                     HStack {
                         Image(systemName: "books.vertical.fill")
-                            .foregroundColor(.purple.opacity(0.4))
+                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.4))
                         Text("My Books")
                             .font(.headline)
-                            .foregroundColor(.purple.opacity(0.6))
+                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
                     }
                 }
             }
