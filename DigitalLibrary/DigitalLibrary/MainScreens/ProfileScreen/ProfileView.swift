@@ -27,7 +27,7 @@ struct ProfileView: View {
                             .cornerRadius(50)
                             .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
 
-                        Text("Profile")
+                        Text("\(viewModel.firstName) \(viewModel.lastName)")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
