@@ -34,7 +34,7 @@ final class UserRepository: UserProvidable {
     
     func setUserID(_ id: String) {
         self.userID = id
-        reference = reference?.child("id")
+        reference = reference?.child(id)
     }
 
     func createUser(_ user: UserModel) {
