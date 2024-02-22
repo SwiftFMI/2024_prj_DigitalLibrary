@@ -19,13 +19,7 @@ struct ProfileView: View {
                     ProgressView()
                 } else {
                     VStack {
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .clipped()
-                            .cornerRadius(50)
-                            .foregroundColor(.purple.opacity(colorScheme == .dark ? 1 : 0.6))
+                        EditableProfileImage(viewModel: .init(imageState: $viewModel.imageState))
 
                         Text("\(viewModel.firstName) \(viewModel.lastName)")
                             .font(.largeTitle)
@@ -89,6 +83,7 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(viewModel: ProfileViewModel(appRootManager: AppRootManager(),
                                                 authenticationProvider: AuthenticationRepositoryMock(),
-                                                usersProvider: UserRepositoryMock()))
+                                                usersProvider: UserRepositoryMock(), 
+                                                imagesProvider: ImagesRepositoryMock()))
     }
 }

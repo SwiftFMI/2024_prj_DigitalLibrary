@@ -54,8 +54,7 @@ struct CameraView: View {
                             .padding(.bottom, 40)
 
                         Text(scannedText)
-                            .background(colorScheme == .dark ? .white : .black)
-                            .foregroundColor(.primary)
+                            .background(.black)
                             .onTapGesture {
                                 let filteredBooks = books.filter { $0.isbn.localizedCaseInsensitiveContains(scannedText) }
                                 if filteredBooks.count == 0 {
