@@ -17,6 +17,8 @@ final class StatisticsViewModel: ObservableObject {
     @Published var readingBooks: [String: Book] = [:]
     @Published var readBooks: [String: Book] = [:]
     @Published var allBooks: [String: Book] = [:]
+    @Published var isLoading = false
+    @Published var areBooksFetched = false
 
     private let userProvider: UserProvidable
 
@@ -27,6 +29,8 @@ final class StatisticsViewModel: ObservableObject {
 
     func getAllBooks() {
         Task {
+            isLoading = true
+
             guard let user = await userProvider.getCurrentUser() else {
                 return
             }
@@ -36,6 +40,7 @@ final class StatisticsViewModel: ObservableObject {
                 self.readBooks = user.readBooks ?? [:]
                 self.allBooks = self.readingBooks
                 self.allBooks.merge(self.readBooks) { (_, new) in new }
+                self.isLoading = false
             }
         }
     }
