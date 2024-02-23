@@ -11,6 +11,12 @@ All standard book readers want to easily keep track of what books they have take
 ## Dictionary
 - **ISBN**: The International Standard Book Number (ISBN) is a numeric commercial book identifier that is intended to be unique.
 
+## Additional features
+- **Sign up/Sign in**: The application allows user to create their profiles that are connected to the Library database.
+- **Profile picture**: Every user has a default profile picture but easily can change it by choosing one from the gallery of the phone.
+- **Remember me**: On login, users can use the "Remember me" functionality, so that they don't have to go through the login process every time they open the app.
+- **Dark theme**: The application supports a dark theme for every screen, corresponding to the settings of the phone.
+
 ## Wireframes
 TODO
 
