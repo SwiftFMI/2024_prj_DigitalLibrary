@@ -18,7 +18,8 @@ All standard book readers want to easily keep track of what books they have take
 - **Dark theme**: The application supports a dark theme for every screen, corresponding to the settings of the phone.
 
 ## Wireframes
-TODO
-
-## Video
-TODO
+<img src="https://github.com/SwiftFMI/2024_prj_DigitalLibrary/assets/94644838/1e36f418-2e73-4e23-99db-e3cca77dcb63" width="500" height="900">
+<img src="https://github.com/SwiftFMI/2024_prj_DigitalLibrary/assets/94644838/c8fa9944-b1a5-4e42-9251-58c2804cb399" width="500" height="900">
+<img src="https://github.com/SwiftFMI/2024_prj_DigitalLibrary/assets/94644838/3e4ac308-25b3-42f5-959d-b4f2d0d3cf50" width="500" height="900">
+<img src="https://github.com/SwiftFMI/2024_prj_DigitalLibrary/assets/94644838/afd9271b-a698-4804-870d-757d3b20d0c2" width="500" height="900">
+<img src="https://github.com/SwiftFMI/2024_prj_DigitalLibrary/assets/94644838/7e90f0de-a42a-4859-8292-a652c4872cd2" width="500" height="900">
